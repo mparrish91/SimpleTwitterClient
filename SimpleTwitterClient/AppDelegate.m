@@ -70,17 +70,24 @@
     BDBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
     
     
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:url consumerKey:key consumerSecret:secret];
+    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
+        
     
-    [twitterClient deauthorize];
-    
-    
-    [twitterClient fetchAccessTokenWithPath:@"oauth/request_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
-        NSLog(@"I got a token!");
-
+    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
+        NSLog(@"I got the access token!");
+        
+        [twitterClient GET:@"https://api.twitter.com/1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Unable to get data");
+            
+        }];
+        
     } failure:^(NSError *error) {
         NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
-
+        
     }];
 
     return true;
