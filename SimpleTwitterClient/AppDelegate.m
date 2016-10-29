@@ -76,7 +76,8 @@
     [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
         NSLog(@"I got the access token!");
         
-        [twitterClient GET:@"https://api.twitter.com/1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        //get User info
+        [twitterClient GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             
             NSLog(@"%@", responseObject);
             
@@ -84,6 +85,17 @@
             NSLog(@"Unable to get data");
             
         }];
+        
+        //get timeline info
+        [twitterClient GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Unable to get data");
+            
+        }];
+
         
     } failure:^(NSError *error) {
         NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
