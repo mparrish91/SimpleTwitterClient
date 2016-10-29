@@ -16,20 +16,47 @@
     NSMutableDictionary *valuesForKeys = [NSMutableDictionary dictionary];
     id value = nil;
     
-    if ((value = dict[@"photos"][0][@"original_size"][@"url"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"imagePath"] = value;
+    if ((value = dict[@"text"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"text"] = value;
     
-    if ((value = dict[@"trail"][0][@"blog"][@"name"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"accountName"] = value;
+    if ((value = dict[@"retweet_count"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"retweetCount"] = value;
     
-    if ((value = dict[@"date"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"date"] = [self convertStringToDate:value];
+    if ((value = dict[@"favourites_count"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"favoritesCount"] = value;
     
-    self.avatarImagePath = @"https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar";
+    if ((value = dict[@"created_at"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"timestamp"] = [self convertStringToDate:value];
+    
+    if ((value = dict[@"profile_image_url_https"]) && [value isKindOfClass:[NSString class]])
+    {
+        NSURL *url = [NSURL URLWithString: value];
+        valuesForKeys[@"profilePhotoURL"] = url;
+    }
+    
     
     [self setValuesForKeysWithDictionary:valuesForKeys];
     
     return self;
+}
+
+
++ (NSArray *)tweetsWithArray:(NSDictionary *)dictionary
+{
+    NSMutableArray *objects = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *dic in dictionary) {
+
+        STTweet *object = [[STTweet alloc] initWithServerRepresentation:dic];
+        if (object != nil)
+        {
+            [objects addObject:object];
+        }
+
+    }
+    return objects;
+
+
 }
 
 

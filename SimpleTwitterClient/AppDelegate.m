@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "STLoginViewController.h"
 #import "BDBOAuth1SessionManager.h"
+#import "STUser.h"
 
 #define twitterUrl @"https://api.twitter.com"
 #define key @"4TkmfVHsaCscvmG98fuJUuIoi"
@@ -80,6 +81,14 @@
         [twitterClient GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             
             NSLog(@"%@", responseObject);
+            if ([responseObject isKindOfClass:[NSDictionary class]])
+            {
+                STUser *user = [[STUser alloc]initWithServerRepresentation:responseObject];
+                NSLog(@"%@", user);
+            }
+            
+                
+            
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"Unable to get data");
