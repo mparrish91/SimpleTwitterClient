@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 #import "STLoginViewController.h"
+#import "BDBOAuth1SessionManager.h"
+
+#define twitterUrl @"https://api.twitter.com"
+#define key @"4TkmfVHsaCscvmG98fuJUuIoi"
+#define secret @"IuQ2AZVD0VKlR15u0lijO6LCdQbWts38x1MhXdHqlAisOj11o6"
 
 
 @interface AppDelegate ()
@@ -58,5 +63,27 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    BDBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
+    
+    
+    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:url consumerKey:key consumerSecret:secret];
+    
+    [twitterClient deauthorize];
+    
+    
+    [twitterClient fetchAccessTokenWithPath:@"oauth/request_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
+        NSLog(@"I got a token!");
+
+    } failure:^(NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
+
+    }];
+
+    return true;
+}
 
 @end
