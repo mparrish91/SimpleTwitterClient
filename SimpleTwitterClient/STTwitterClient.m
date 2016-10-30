@@ -6,9 +6,9 @@
 //  Copyright © 2016 parry. All rights reserved.
 //
 
-#import "PTTwitterClient.h"
+#import "STTwitterClient.h"
 
-@implementation PTTwitterClient
+@implementation STTwitterClient
 
 
 -(id)init {
@@ -19,11 +19,11 @@
 
 + (instancetype)sharedInstance
 {
-    static PTTwitterClient *sharedInstance = nil;
+    static STTwitterClient *sharedInstance = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[PTTwitterClient alloc] init];
+        sharedInstance = [[STTwitterClient alloc] init];
     });
     return sharedInstance;
 }

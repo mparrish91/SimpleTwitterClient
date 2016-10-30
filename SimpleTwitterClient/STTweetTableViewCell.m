@@ -1,14 +1,14 @@
 //
-//  PTTweetTableViewCell.m
+//  STTweetTableViewCell.m
 //  SimpleTwitterClient
 //
 //  Created by parry on 10/29/16.
 //  Copyright © 2016 parry. All rights reserved.
 //
 
-#import "PTTweetTableViewCell.h"
+#import "STTweetTableViewCell.h"
 
-@implementation PTTweetTableViewCell
+@implementation STTweetTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

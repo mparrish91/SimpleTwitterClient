@@ -1,5 +1,5 @@
 //
-//  PTTweetTableViewCell.h
+//  STTweetTableViewCell.h
 //  SimpleTwitterClient
 //
 //  Created by parry on 10/29/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PTTweetTableViewCell : UITableViewCell
+@interface STTweetTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;

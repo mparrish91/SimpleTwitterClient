@@ -1,5 +1,5 @@
 //
-//  PTTweetDetailView.m
+//  STTweetDetailView.m
 //  SimpleTwitterClient
 //
 //  Created by parry on 10/29/16.
@@ -8,7 +8,7 @@
 
 #import "PTTweetDetailView.h"
 
-@implementation PTTweetDetailView
+@implementation STTweetDetailView
 
 /*
 // Only override drawRect: if you perform custom drawing.

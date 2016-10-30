@@ -1,5 +1,5 @@
 //
-//  PTTwitterClient.h
+//  STTwitterClient.h
 //  SimpleTwitterClient
 //
 //  Created by parry on 10/29/16.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PTTwitterClient : NSObject
+@interface STTwitterClient : NSObject
 
 @end

@@ -8,6 +8,8 @@
 
 #import "STLoginViewController.h"
 #import "BDBOAuth1SessionManager.h"
+#import "STHomeViewController.h"
+
 
 #define twitterUrl @"https://api.twitter.com"
 #define key @"4TkmfVHsaCscvmG98fuJUuIoi"
@@ -74,6 +76,12 @@
     }];
     
 }
+
+
+
+//    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithMovie:movie];
+//    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithURL:[movie posterPath]];
+//    [self.navigationController pushViewController:detailVC animated:true];
 
 
 

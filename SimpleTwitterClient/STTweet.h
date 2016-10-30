@@ -18,6 +18,8 @@
 @property(strong,readwrite,nonatomic) NSString *text;
 
 @property(strong,readwrite,nonatomic) NSString *accountName;
+@property(strong,readwrite,nonatomic) NSString *userName;
+
 @property(strong,readwrite,nonatomic) NSString *avatarImagePath;
 
 @property(readwrite,nonatomic) NSNumber *retweetCount;
