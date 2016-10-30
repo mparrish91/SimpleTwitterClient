@@ -27,5 +27,7 @@ typedef void(^STDataRequestHandler)(id responseObject, NSError *error);
 //class method
 + (instancetype)sharedInstance;
 
+@property (nonatomic, copy) void (^successHandler)(id responseObject);
+@property void(^failureHandler)(NSError *error);
 
 @end

@@ -55,19 +55,20 @@
     
 }
 
-- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock errorBlock:(successCompletion)errorBlock
+- (void)handleOpenURL:(NSURL *)url
 
 {
     BDBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
     [self fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
         NSLog(@"I got the access token!");
         
-        completionBlock();
-
+        self.successHandler(url);
         
         } failure:^(NSError *error) {
             NSLog(@"Unable to get data");
-            errorBlock(error);
+            
+            self.successHandler(error);
+
 
         }];
 
