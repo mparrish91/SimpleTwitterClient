@@ -6,7 +6,7 @@
 //  Copyright © 2016 parry. All rights reserved.
 //
 
-#import "PTTweetDetailView.h"
+#import "STTweetDetailView.h"
 
 @implementation STTweetDetailView
 

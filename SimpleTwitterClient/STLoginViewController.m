@@ -8,7 +8,7 @@
 
 #import "STLoginViewController.h"
 #import "BDBOAuth1SessionManager.h"
-#import "STHomeViewController.h"
+//#import "STHomeViewController.h"
 
 
 #define twitterUrl @"https://api.twitter.com"
@@ -16,12 +16,11 @@
 #define secret @"IuQ2AZVD0VKlR15u0lijO6LCdQbWts38x1MhXdHqlAisOj11o6"
 
 
-@interface STLoginViewController ()
-
-@property(strong,readwrite,nonatomic) UIButton *loginButton;
-
-
-@end
+//@interface STLoginViewController ()
+//
+//@property(strong,readwrite,nonatomic) UIButton *loginButton;
+//
+//@end
 
 @implementation STLoginViewController
 
@@ -45,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.loginButton addTarget:self
                           action:@selector(loginToTwitter)
                 forControlEvents:UIControlEventTouchUpInside];
@@ -93,15 +92,12 @@
     self.view = view;
 
     [view addSubview:self.loginButton];
-    
-    
 }
+
 
 -(void)setConstraints
 {
     UILayoutGuide *margins = self.view.layoutMarginsGuide;
-    
-    
     
     
     self.loginButton.translatesAutoresizingMaskIntoConstraints = false;
@@ -115,7 +111,6 @@
     self.loginButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:13];
     self.loginButton.layer.backgroundColor = [UIColor blueColor].CGColor;
 
-    
     
 }
 

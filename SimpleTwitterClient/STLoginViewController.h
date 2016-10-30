@@ -10,4 +10,6 @@
 
 @interface STLoginViewController : UIViewController
 
+@property(strong,readwrite,nonatomic) UIButton *loginButton;
+
 @end

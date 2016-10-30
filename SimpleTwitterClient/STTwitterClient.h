@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+
+
+typedef void(^successCompletion)(NSError *error);
+
+
+
 @interface STTwitterClient : NSObject
+
+
+//- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock ;
+- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock errorBlock:(successCompletion)errorBlock;
+
+
 
 @end

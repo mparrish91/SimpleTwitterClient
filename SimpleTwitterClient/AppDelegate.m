@@ -11,6 +11,8 @@
 #import "BDBOAuth1SessionManager.h"
 #import "STUser.h"
 #import "STTweet.h"
+#import "STTwitterClient.h"
+
 
 
 #define twitterUrl @"https://api.twitter.com"
@@ -74,53 +76,16 @@
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    BDBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
-    
-    
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
+    STTwitterClient *client = [[STTwitterClient alloc]init];
+    [client handleOpenURL:url completion:^{
+        NSLog(@"User loggedIn");
         
-    
-    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
-        NSLog(@"I got the access token!");
-        
-        //get User info
-        [twitterClient GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-            
-            NSLog(@"%@", responseObject);
-            if ([responseObject isKindOfClass:[NSDictionary class]])
-            {
-                STUser *user = [[STUser alloc]initWithServerRepresentation:responseObject];
-                NSLog(@"%@", user);
-            }
-            
-                
-            
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"Unable to get data");
-            
-        }];
-        
-        //get timeline info
-        [twitterClient GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-            
-            NSLog(@"%@", responseObject);
-            
-            NSArray *tweets = [STTweet tweetsWithArray:responseObject];
-            NSLog(@"SWEFsa");
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"Unable to get data");
-            
-        }];
-
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
+    } errorBlock:^(NSError *error) {
+        NSLog(@"Failed login");
         
     }];
 
-    return true;
+     return YES;
 }
 
 @end

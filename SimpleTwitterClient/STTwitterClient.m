@@ -8,6 +8,11 @@
 
 #import "STTwitterClient.h"
 
+#define twitterUrl @"https://api.twitter.com"
+#define key @"4TkmfVHsaCscvmG98fuJUuIoi"
+#define secret @"IuQ2AZVD0VKlR15u0lijO6LCdQbWts38x1MhXdHqlAisOj11o6"
+
+
 @implementation STTwitterClient
 
 
@@ -30,79 +35,118 @@
 
 - (void)login:(void (^)(NSArray *objects, NSError *error))completionHandler
 {
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/top_rated?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
-    FLHTTPClient *httpClient = [[FLHTTPClient alloc]initWithURL:url];
     
-    NSHTTPURLResponse *response=nil;
-    NSError *error = nil;
+    NSURL *url = [NSURL URLWithString:twitterUrl];
+    
+    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:url consumerKey:key consumerSecret:secret];
+    
+    [twitterClient deauthorize];
+    [twitterClient fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
+        NSLog(@"I got a token!");
+        
+        NSString *string = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
+        NSURL *authorizeURL = [NSURL URLWithString:string];
+        
+        [[UIApplication sharedApplication] openURL:authorizeURL options:@{} completionHandler:nil];
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
+        
+    }];
+    
+   }
+
+- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock errorBlock:(successCompletion)errorBlock
+
+{
+    DBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
+    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
     
     
-    //TODO: handle the urlrespnse and error
-    [httpClient performJSONRequestWithHandler:^(id responseObject, NSHTTPURLResponse *response, NSError *error)
-     {
-         
-         
-         NSMutableArray *objects = nil;
-         
-         if (!error && [responseObject isKindOfClass:[NSDictionary class]]) {
-             NSArray *objectRepresentations = responseObject[@"results"];
-             objects = [NSMutableArray arrayWithCapacity:objectRepresentations.count];
-             
-             for (NSDictionary *dict in objectRepresentations) {
-                 FLMovie *object = [[FLMovie alloc] initWithServerRepresentation:dict];
-                 if (object) [objects addObject:object];
-             }
-             
-         }
-         
-         self.offset++;
-         
-         if (completionHandler)
-             completionHandler(objects, error);
-         
-     }];
+    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
+        NSLog(@"I got the access token!");
+        
+        completionBlock();
+
+        
+        
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Unable to get data");
+            errorBlock(error);
+            
+            
+
+        }];
+        
+        
+
+
 }
 
-- (void)handleOpenURL:(NSURL *)url
+- (void)currentAccount
 {
+    DBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
+    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
     
+    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
+        NSLog(@"I got the access token!");
+        
+        //get User info
+        [twitterClient GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            if ([responseObject isKindOfClass:[NSDictionary class]])
+            {
+                STUser *user = [[STUser alloc]initWithServerRepresentation:responseObject];
+                NSLog(@"%@", user);
+            }
+            
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Unable to get data");
+            
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
+        
+    }];
+
 }
+
 
 
 - (void)homeTimeline:(void (^)(NSArray *objects, NSError *error))completionHandler
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&page=%d", self.offset]];
+    DBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
+    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
     
     
-    FLHTTPClient *httpClient = [[FLHTTPClient alloc]initWithURL:url];
-    
-    NSHTTPURLResponse *response=nil;
-    NSError *error = nil;
-    
-    
-    //TODO: handle the urlresponse and error
-    [httpClient performJSONRequestWithHandler:^(id responseObject, NSHTTPURLResponse *response, NSError *error)
-     {
-         
-         NSMutableArray *objects = nil;
-         
-         if (!error && [responseObject isKindOfClass:[NSDictionary class]]) {
-             NSArray *objectRepresentations = responseObject[@"results"];
-             objects = [NSMutableArray arrayWithCapacity:objectRepresentations.count];
-             
-             for (NSDictionary *dict in objectRepresentations) {
-                 FLMovie *object = [[FLMovie alloc] initWithServerRepresentation:dict];
-                 if (object) [objects addObject:object];
-             }
-         }
-         
-         self.offset++;
-         
-         if (completionHandler)
-             completionHandler(objects, error);
-         
-     }];
-    
+    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
+        NSLog(@"I got the access token!");
+        
+        //get timeline info
+        [twitterClient GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            
+            NSArray *tweets = [STTweet tweetsWithArray:responseObject];
+            NSLog(@"SWEFsa");
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Unable to get data");
+            
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
+        
+    }];
+
+       
 }
 
 
