@@ -34,8 +34,12 @@
 }
 
 
-- (void)login:(successHandler)success failure:(failureHandler)failure
+- (void)login:(SuccessHandler)success failure:(FailureHandler)failure
 {
+    
+    self.successHandler = success;
+    self.failureHandler = failure;
+    
     [[STTwitterClient sharedInstance] deauthorize];
     [[STTwitterClient sharedInstance] fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
         NSLog(@"I got a token!");
@@ -62,12 +66,14 @@
     [self fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
         NSLog(@"I got the access token!");
         
-        self.successHandler(url);
+        if (self.successHandler)
+            self.successHandler(nil);
+
         
         } failure:^(NSError *error) {
             NSLog(@"Unable to get data");
             
-            self.successHandler(error);
+            self.failureHandler(error);
 
 
         }];
@@ -95,7 +101,7 @@
 
 
 
-- (void)homeTimeline:(successHandler)success failure:(failureHandler)failure
+- (void)homeTimeline:(SuccessHandler)success failure:(FailureHandler)failure
 {
         [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
 

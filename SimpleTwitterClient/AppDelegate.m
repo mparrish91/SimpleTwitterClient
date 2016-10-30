@@ -77,13 +77,7 @@
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
     STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client handleOpenURL:url completion:^{
-        NSLog(@"User loggedIn");
-        
-    } errorBlock:^(NSError *error) {
-        NSLog(@"Failed login");
-        
-    }];
+    [client handleOpenURL:url];
 
      return YES;
 }

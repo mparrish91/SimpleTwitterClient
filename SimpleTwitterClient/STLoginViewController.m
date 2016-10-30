@@ -56,9 +56,10 @@
 
 - (void)loginToTwitter {
     STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client login:^(id responseObject, NSError *error) {
-        if (!error) {
-        }
+    [client login:^(id responseObject) {
+        NSLog(@"login success");
+    } failure:^(NSError *error) {
+        
     }];
     
 }
