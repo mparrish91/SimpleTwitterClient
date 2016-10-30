@@ -36,13 +36,8 @@
 
 - (void)login:(void (^)(NSArray *objects, NSError *error))completionHandler
 {
-    
-    NSURL *url = [NSURL URLWithString:twitterUrl];
-    
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:url consumerKey:key consumerSecret:secret];
-    
-    [twitterClient deauthorize];
-    [twitterClient fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
+    [self deauthorize];
+    [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
         NSLog(@"I got a token!");
         
         NSString *string = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
@@ -62,10 +57,7 @@
 
 {
     BDBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
-    
-    
-    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
+    [self fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
         NSLog(@"I got the access token!");
         
         completionBlock();
@@ -96,7 +88,6 @@
             NSLog(@"Unable to get data");
             
         }];
-
 }
 
 
