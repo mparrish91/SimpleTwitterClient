@@ -7,6 +7,10 @@
 //
 
 #import "STTwitterClient.h"
+#import "BDBOAuth1SessionManager.h"
+#import "STUser.h"
+#import "STTweet.h"
+
 
 #define twitterUrl @"https://api.twitter.com"
 #define key @"4TkmfVHsaCscvmG98fuJUuIoi"
@@ -16,11 +20,6 @@
 @implementation STTwitterClient
 
 
--(id)init {
-    if (self = [super init]) {
-    }
-    return self;
-}
 
 + (instancetype)sharedInstance
 {
@@ -28,10 +27,12 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[STTwitterClient alloc] init];
+        NSURL *url = [NSURL URLWithString:twitterUrl];
+        sharedInstance = [[STTwitterClient alloc]initWithBaseURL:url consumerKey:key consumerSecret:secret];
     });
     return sharedInstance;
 }
+
 
 - (void)login:(void (^)(NSArray *objects, NSError *error))completionHandler
 {
@@ -55,12 +56,12 @@
         
     }];
     
-   }
+}
 
 - (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock errorBlock:(successCompletion)errorBlock
 
 {
-    DBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
+    BDBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
     BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
     
     
@@ -70,30 +71,18 @@
         completionBlock();
 
         
-        
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } failure:^(NSError *error) {
             NSLog(@"Unable to get data");
             errorBlock(error);
-            
-            
 
         }];
-        
-        
-
 
 }
 
-- (void)currentAccount
+- (void)currentAccount:(NSURL *)url
 {
-    DBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
-    
-    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
-        NSLog(@"I got the access token!");
-        
         //get User info
-        [twitterClient GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             
             NSLog(@"%@", responseObject);
             if ([responseObject isKindOfClass:[NSDictionary class]])
@@ -107,12 +96,6 @@
             NSLog(@"Unable to get data");
             
         }];
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
-        
-    }];
 
 }
 
@@ -120,15 +103,7 @@
 
 - (void)homeTimeline:(void (^)(NSArray *objects, NSError *error))completionHandler
 {
-    DBOAuth1Credential *requestToken = [[BDBOAuth1Credential alloc]initWithQueryString:url.query];
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:[NSURL URLWithString:twitterUrl] consumerKey:key consumerSecret:secret];
-    
-    
-    [twitterClient fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
-        NSLog(@"I got the access token!");
-        
-        //get timeline info
-        [twitterClient GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             
             NSLog(@"%@", responseObject);
             
@@ -139,14 +114,6 @@
             NSLog(@"Unable to get data");
             
         }];
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
-        
-    }];
-
-       
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BDBOAuth1SessionManager.h"
 
 
 
@@ -14,7 +15,7 @@ typedef void(^successCompletion)(NSError *error);
 
 
 
-@interface STTwitterClient : NSObject
+@interface STTwitterClient : BDBOAuth1SessionManager
 
 
 //- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock ;
