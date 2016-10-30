@@ -27,6 +27,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [UINavigationBar appearance].barTintColor = [UIColor lightGrayColor];
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+
+    
     
     STLoginViewController *businessVC =[[STLoginViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:businessVC];

@@ -63,10 +63,11 @@
     self.tweetsTableView.estimatedRowHeight = 100;
     self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
     
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
     
       self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
 
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"twitter_logo"]];
 
     
     [self setConstraints];
