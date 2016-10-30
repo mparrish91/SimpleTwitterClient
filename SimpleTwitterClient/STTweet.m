@@ -19,10 +19,10 @@
     if ((value = dict[@"text"]) && [value isKindOfClass:[NSString class]])
         valuesForKeys[@"text"] = value;
     
-    if ((value = dict[@"retweet_count"]) && [value isKindOfClass:[NSString class]])
+    if ((value = dict[@"retweet_count"]) && [value respondsToSelector:@selector(integerValue)])
         valuesForKeys[@"retweetCount"] = value;
     
-    if ((value = dict[@"favourites_count"]) && [value isKindOfClass:[NSString class]])
+    if ((value = dict[@"favorite_count"]) && [value respondsToSelector:@selector(integerValue)])
         valuesForKeys[@"favoritesCount"] = value;
     
     if ((value = dict[@"created_at"]) && [value isKindOfClass:[NSString class]])
@@ -52,10 +52,8 @@
         {
             [objects addObject:object];
         }
-
     }
     return objects;
-
 
 }
 
@@ -64,7 +62,7 @@
 - (NSDate *)convertStringToDate: (NSString *)str
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormat setDateFormat:@"EEE MMM d HH:mm:ss Z y"];
     NSDate *date = [dateFormat dateFromString:str];
     
     return date;

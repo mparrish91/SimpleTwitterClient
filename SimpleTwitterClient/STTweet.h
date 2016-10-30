@@ -12,13 +12,16 @@
 
 - (instancetype)initWithServerRepresentation:(NSDictionary *)dict;
 
++ (NSArray *)tweetsWithArray:(NSDictionary *)dictionary;
+
+
 @property(strong,readwrite,nonatomic) NSString *text;
 
 @property(strong,readwrite,nonatomic) NSString *accountName;
 @property(strong,readwrite,nonatomic) NSString *avatarImagePath;
 
-@property(readwrite,nonatomic) int *retweetCount;
-@property(readwrite,nonatomic) int *favoritesCount;
+@property(readwrite,nonatomic) NSNumber *retweetCount;
+@property(readwrite,nonatomic) NSNumber *favoritesCount;
 @property(strong,readwrite,nonatomic) NSDate *timestamp;
 
 

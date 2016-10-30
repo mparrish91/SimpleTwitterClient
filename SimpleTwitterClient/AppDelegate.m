@@ -10,6 +10,8 @@
 #import "STLoginViewController.h"
 #import "BDBOAuth1SessionManager.h"
 #import "STUser.h"
+#import "STTweet.h"
+
 
 #define twitterUrl @"https://api.twitter.com"
 #define key @"4TkmfVHsaCscvmG98fuJUuIoi"
@@ -99,6 +101,9 @@
         [twitterClient GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
             
             NSLog(@"%@", responseObject);
+            
+            NSArray *tweets = [STTweet tweetsWithArray:responseObject];
+            NSLog(@"SWEFsa");
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"Unable to get data");
