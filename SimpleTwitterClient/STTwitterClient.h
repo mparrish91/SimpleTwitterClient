@@ -17,14 +17,13 @@ typedef void(^FailureHandler)(NSError *error);
 @interface STTwitterClient : BDBOAuth1SessionManager
 
 @property (nonatomic, copy) void (^successHandler)(id responseObject);
-//@property (nonatomic, copy) void (^successHandler)(void);
-//@property (nonatomic, copy) SuccessHandler successHandler;
 
 @property (nonatomic, copy) FailureHandler failureHandler;
 
 
 - (void)handleOpenURL:(NSURL *)url;
 - (void)login:(SuccessHandler)success failure:(FailureHandler)failure;
+- (void)homeTimeline:(SuccessHandler)success failure:(FailureHandler)failure;
 
 
 + (instancetype)sharedInstance;

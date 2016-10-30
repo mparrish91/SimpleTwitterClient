@@ -49,8 +49,6 @@
         
         [[UIApplication sharedApplication] openURL:authorizeURL options:@{} completionHandler:nil];
         
-        success(nil);
-
     } failure:^(NSError *error) {
         NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
         failure(error);

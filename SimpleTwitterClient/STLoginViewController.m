@@ -8,7 +8,7 @@
 
 #import "STLoginViewController.h"
 #import "BDBOAuth1SessionManager.h"
-//#import "STHomeViewController.h"
+#import "STHomeViewController.h"
 #import "STTwitterClient.h"
 
 
@@ -58,6 +58,12 @@
     STTwitterClient *client = [STTwitterClient sharedInstance];
     [client login:^(id responseObject) {
         NSLog(@"login success");
+        
+        STHomeViewController *homeVC = [[STHomeViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:homeVC];
+        [self.navigationController presentViewController:nav animated:true completion:nil];
+        
+        
     } failure:^(NSError *error) {
         
     }];
@@ -66,9 +72,6 @@
 
 
 
-//    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithMovie:movie];
-//    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithURL:[movie posterPath]];
-//    [self.navigationController pushViewController:detailVC animated:true];
 
 
 
