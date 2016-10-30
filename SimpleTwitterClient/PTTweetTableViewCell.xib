@@ -16,7 +16,7 @@
                 <frame key="frameInset" width="501" height="216"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uiw-cv-9Bc">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="Uiw-cv-9Bc">
                         <constraints>
                             <constraint firstAttribute="width" constant="10" id="DlO-Y8-Sla"/>
                             <constraint firstAttribute="height" constant="10" id="qdQ-fX-rna"/>

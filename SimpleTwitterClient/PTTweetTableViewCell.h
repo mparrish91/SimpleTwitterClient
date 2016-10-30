@@ -10,7 +10,6 @@
 
 @interface PTTweetTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *retweetIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

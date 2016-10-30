@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="hHZ-gU-4YK">
+        <view contentMode="scaleToFill" id="hHZ-gU-4YK" customClass="PTTweetDetailView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -40,34 +40,6 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ekU-GV-7af">
-                    <frame key="frameInset" minX="275" minY="244" width="10" height="10"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="10" id="3FU-9X-8uB"/>
-                        <constraint firstAttribute="width" constant="10" id="Vy2-SJ-ZrX"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHR-S7-qjU">
-                    <frame key="frameInset" minX="296" minY="45" width="79" height="7"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="9"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TTY-yy-oni">
-                    <frame key="frameInset" minX="154" minY="253" width="10" height="10"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="10" id="l31-bo-zpH"/>
-                        <constraint firstAttribute="width" constant="10" id="sXm-fx-DRc"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Lu-c0-zm6">
-                    <frame key="frameInset" minX="53" minY="253" width="10" height="10"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="10" id="l0U-gW-2NV"/>
-                        <constraint firstAttribute="width" constant="10" id="xxO-UV-Kc2"/>
-                    </constraints>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CTR-Fo-MpF">
                     <frame key="frameInset" minX="28" minY="36" width="60" height="60"/>
                     <constraints>
@@ -75,7 +47,7 @@
                         <constraint firstAttribute="width" constant="60" id="yL7-5r-yPm"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jh-n8-njA">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="twitter_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="7Jh-n8-njA">
                     <frame key="frameInset" minX="53" minY="12" width="10" height="10"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="UKI-Yf-ac4"/>
@@ -99,13 +71,6 @@
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7e-UN-8Ff">
                     <frame key="frameInset" minX="37" minY="149" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGN-8R-bOo">
-                    <frame key="frameInset" minX="87" minY="149" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,9 +104,42 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye5-UF-jlU">
+                    <frame key="frameInset" minX="24" minY="244" width="48" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button" image="twitter_reply"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUK-Mv-ZPS">
+                    <frame key="frameInset" minX="296" minY="240" width="31" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button" image="twitter_like"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3y-Zn-LVa">
+                    <frame key="frameInset" minX="131" minY="240" width="60" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button" image="twitter_retweet"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="favoriteCountLabel" destination="dhB-SB-Oly" id="a7I-E3-Ll8"/>
+                <outlet property="likeButton" destination="OUK-Mv-ZPS" id="XMY-Fl-Vqh"/>
+                <outlet property="nameLabel" destination="2rn-ZN-Foq" id="A3O-Rv-3iI"/>
+                <outlet property="profilePhotoImageView" destination="CTR-Fo-MpF" id="c8R-jL-YHb"/>
+                <outlet property="replyButton" destination="ye5-UF-jlU" id="8mY-Ys-S4s"/>
+                <outlet property="retweetButton" destination="Y3y-Zn-LVa" id="JIN-pJ-H4K"/>
+                <outlet property="retweetCountLabel" destination="rH9-kN-q4k" id="6ZF-0S-Sxe"/>
+                <outlet property="retweetLabel" destination="GJ8-ER-6G5" id="03B-F3-hZP"/>
+                <outlet property="timeLabel" destination="Z7e-UN-8Ff" id="6bF-aH-cL9"/>
+                <outlet property="tweetTextLabel" destination="I1W-Rl-oUI" id="8bw-ZB-FTw"/>
+                <outlet property="usernameLabel" destination="pQx-5S-SUD" id="UQT-S7-pRp"/>
+            </connections>
             <point key="canvasLocation" x="1428.5" y="-3824.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="twitter_like" width="64" height="60"/>
+        <image name="twitter_reply" width="85" height="60"/>
+        <image name="twitter_retweet" width="99" height="60"/>
+    </resources>
 </document>
