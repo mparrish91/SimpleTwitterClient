@@ -10,17 +10,22 @@
 #import "BDBOAuth1SessionManager.h"
 
 
+typedef void (^successHandler)(id responseObject);
+typedef void(^failureHandler)(NSError *error);
 
-typedef void(^successCompletion)(NSError *error);
-
-
+typedef void(^STDataRequestHandler)(id responseObject, NSError *error);
 
 @interface STTwitterClient : BDBOAuth1SessionManager
 
 
 //- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock ;
-- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock errorBlock:(successCompletion)errorBlock;
+//- (void)handleOpenURL:(NSURL *)url completion:(void (^)(void))completionBlock errorBlock:(successCompletion)errorBlock;
 
+- (void)login:(STDataRequestHandler)handler;
+
+
+//class method
++ (instancetype)sharedInstance;
 
 
 @end

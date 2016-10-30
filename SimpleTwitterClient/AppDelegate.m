@@ -76,7 +76,7 @@
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    STTwitterClient *client = [[STTwitterClient alloc]init];
+    STTwitterClient *client = [STTwitterClient sharedInstance];
     [client handleOpenURL:url completion:^{
         NSLog(@"User loggedIn");
         

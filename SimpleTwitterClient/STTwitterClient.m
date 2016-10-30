@@ -34,10 +34,10 @@
 }
 
 
-- (void)login:(void (^)(NSArray *objects, NSError *error))completionHandler
+- (void)login:(successHandler)success failure:(failureHandler)failure
 {
-    [self deauthorize];
-    [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
+    [[STTwitterClient sharedInstance] deauthorize];
+    [[STTwitterClient sharedInstance] fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
         NSLog(@"I got a token!");
         
         NSString *string = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
@@ -45,9 +45,11 @@
         
         [[UIApplication sharedApplication] openURL:authorizeURL options:@{} completionHandler:nil];
         
-        
+        success(nil);
+
     } failure:^(NSError *error) {
         NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
+        failure(error);
         
     }];
     
@@ -92,18 +94,17 @@
 
 
 
-- (void)homeTimeline:(void (^)(NSArray *objects, NSError *error))completionHandler
+- (void)homeTimeline:(successHandler)success failure:(failureHandler)failure
 {
         [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-            
-            NSLog(@"%@", responseObject);
-            
+
             NSArray *tweets = [STTweet tweetsWithArray:responseObject];
-            NSLog(@"SWEFsa");
+            success(tweets);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"Unable to get data");
-            
+            failure(error);
+
         }];
 }
 

@@ -9,6 +9,7 @@
 #import "STLoginViewController.h"
 #import "BDBOAuth1SessionManager.h"
 //#import "STHomeViewController.h"
+#import "STTwitterClient.h"
 
 
 #define twitterUrl @"https://api.twitter.com"
@@ -54,24 +55,10 @@
 
 
 - (void)loginToTwitter {
-    
-    NSURL *url = [NSURL URLWithString:twitterUrl];
-    
-    BDBOAuth1SessionManager *twitterClient = [[BDBOAuth1SessionManager alloc]initWithBaseURL:url consumerKey:key consumerSecret:secret];
-    
-    [twitterClient deauthorize];
-    [twitterClient fetchRequestTokenWithPath:@"oauth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
-        NSLog(@"I got a token!");
-        
-      NSString *string = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
-      NSURL *authorizeURL = [NSURL URLWithString:string];
-    
-        [[UIApplication sharedApplication] openURL:authorizeURL options:@{} completionHandler:nil];
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@", [NSString stringWithFormat:@"error %@", [error localizedDescription]]);
-
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client login:^(id responseObject, NSError *error) {
+        if (!error) {
+        }
     }];
     
 }
