@@ -76,7 +76,7 @@
     self.detailView.contentMode = UIViewContentModeScaleAspectFit;
     
     
-    self.detailView.contentMode = UIViewContentModeScaleAspectFit;
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
 }
 

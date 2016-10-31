@@ -19,6 +19,7 @@
 		4288C1601DC5411400A3A1D1 /* STTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C15F1DC5411400A3A1D1 /* STTweet.m */; };
 		4288C1631DC5411C00A3A1D1 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C1621DC5411C00A3A1D1 /* STUser.m */; };
 		4288C1751DC5BDB600A3A1D1 /* STTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C1741DC5BDB600A3A1D1 /* STTwitterClient.m */; };
+		42C678E31DC723190084EF7B /* STNewTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C678E21DC723190084EF7B /* STNewTweetViewController.m */; };
 		42F355931DC67CF40055B7EE /* STHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F355921DC67CF40055B7EE /* STHomeViewController.m */; };
 		42F355971DC67D010055B7EE /* STTweetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F355951DC67D010055B7EE /* STTweetTableViewCell.m */; };
 		42F355981DC67D010055B7EE /* STTweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F355961DC67D010055B7EE /* STTweetTableViewCell.xib */; };
@@ -50,6 +51,8 @@
 		4288C1621DC5411C00A3A1D1 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
 		4288C1731DC5BDB600A3A1D1 /* STTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterClient.h; sourceTree = "<group>"; };
 		4288C1741DC5BDB600A3A1D1 /* STTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterClient.m; sourceTree = "<group>"; };
+		42C678E11DC723190084EF7B /* STNewTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNewTweetViewController.h; sourceTree = "<group>"; };
+		42C678E21DC723190084EF7B /* STNewTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNewTweetViewController.m; sourceTree = "<group>"; };
 		42F355911DC67CF40055B7EE /* STHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHomeViewController.h; sourceTree = "<group>"; };
 		42F355921DC67CF40055B7EE /* STHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHomeViewController.m; sourceTree = "<group>"; };
 		42F355941DC67D010055B7EE /* STTweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTweetTableViewCell.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				42F355921DC67CF40055B7EE /* STHomeViewController.m */,
 				422A7CD01DC70300000BF247 /* STTweetDetailViewController.h */,
 				422A7CD11DC70300000BF247 /* STTweetDetailViewController.m */,
+				42C678E11DC723190084EF7B /* STNewTweetViewController.h */,
+				42C678E21DC723190084EF7B /* STNewTweetViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				4288C1431DC502FE00A3A1D1 /* main.m in Sources */,
 				42F355931DC67CF40055B7EE /* STHomeViewController.m in Sources */,
 				422A7CCF1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m in Sources */,
+				42C678E31DC723190084EF7B /* STNewTweetViewController.m in Sources */,
 				4288C1631DC5411C00A3A1D1 /* STUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
