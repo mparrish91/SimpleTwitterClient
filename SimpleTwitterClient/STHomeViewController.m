@@ -140,30 +140,25 @@
     
     
     STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [tweet userName];
-    cell.tweetTextLabel.text = [tweet text];
+    cell.retweetLabel.text = [tweet retweetName];
     cell.nameLabel.text = [tweet accountName];
+    cell.usernameLabel.text = [tweet userName];
     cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
+    cell.tweetTextLabel.text = [tweet text];
 
     
     if (!tweet.retweet)
     {
-        //TODO: handle if tweet is a retweet
         cell.retweetLabel.hidden = true;
         cell.retweetImageView.hidden = true;
     }
 
-
-    
-    
-
     cell.tweetTextLabel.text = [tweet text];
   
+
+    NSURL *photoImageURL = [tweet avatarImagePath];
     
-//    NSURL *photoImageURL = [tweet avatarImagePath];
-    
-    
-//    [cell.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
+    [cell.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -16,6 +16,7 @@
 
 
 @property(strong,readwrite,nonatomic) NSString *retweetName;
+@property(strong,readwrite,nonatomic) NSString *text;
 
 @property(strong,readwrite,nonatomic) NSString *accountName;
 @property(strong,readwrite,nonatomic) NSString *userName;
