@@ -68,7 +68,7 @@
     self.tweetsTableView.estimatedRowHeight = 200;
     self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     
       self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New"  style:UIBarButtonItemStylePlain target:self action:@selector(newTweet)];
 
@@ -223,6 +223,13 @@
 
 }
 
+-(void)signOut
+{
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client deauthorize];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
 
 
 -(NSString *)setTimeAgo: (NSDate *)date
