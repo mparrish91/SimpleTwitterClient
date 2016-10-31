@@ -9,6 +9,7 @@
 #import "STNewTweetViewController.h"
 #import "STTwitterClient.h"
 #import "STUser.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface STNewTweetViewController ()
 
@@ -43,15 +44,19 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet"  style:UIBarButtonItemStylePlain target:self action:@selector(onTweetButtonPressed)];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
-    self.textCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(120, 1, 150, 40)];
+    self.textCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 1, 150, 40)];
     self.textCountLabel.text = @"140";
+    self.textCountLabel.textColor = [UIColor whiteColor];
     self.textCountLabel.textAlignment = NSTextAlignmentCenter;
     [view addSubview:self.textCountLabel];
-    self.navigationItem.titleView = view;
+//    self.navigationItem.titleView = view;
+    [self.navigationController.navigationBar addSubview:view];
 
-
+    [self fetchUser];
     [self setConstraints];
+    
+    
 
 }
 
@@ -63,6 +68,12 @@
         if([responseObject isKindOfClass:[STUser class]])
         {
             self.user = responseObject;
+            self.nameLabel.text = [self.user name];
+            self.usernameLabel.text = [NSString stringWithFormat:@"@%@",[self.user username]];
+            
+            NSURL *photoImageURL = [self.user profilePhotoURL];
+            
+            [self.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
 
         }
         
@@ -82,6 +93,9 @@
     [view addSubview:self.usernameLabel];
     [view addSubview:self.profilePhotoImageView];
     [view addSubview:self.tweetTextView];
+    
+    view.backgroundColor = [UIColor whiteColor];
+    self.tweetTextView.backgroundColor = [UIColor redColor];
 
 }
 
@@ -91,26 +105,29 @@
 {
     
     UILayoutGuide *margins = self.view.layoutMarginsGuide;
-    
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+
     
     self.profilePhotoImageView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.profilePhotoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.profilePhotoImageView.heightAnchor constraintEqualToConstant:3].active = YES;
+    [self.profilePhotoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor constant:5].active = YES;
+    [self.profilePhotoImageView.heightAnchor constraintEqualToConstant:30].active = YES;
     [self.profilePhotoImageView.widthAnchor constraintEqualToConstant:30].active = YES;
-    [self.profilePhotoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.profilePhotoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor constant:5].active = YES;
     
     
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.profilePhotoImageView.trailingAnchor constant:1].active = YES;
+    [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.profilePhotoImageView.trailingAnchor constant:2].active = YES;
     [self.nameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.nameLabel.topAnchor constraintEqualToAnchor:self.profilePhotoImageView.topAnchor].active = YES;
-    
+    self.nameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:7];
+
     
     self.usernameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.usernameLabel.leadingAnchor constraintEqualToAnchor:self.nameLabel.leadingAnchor constant:1].active = YES;
+    [self.usernameLabel.leadingAnchor constraintEqualToAnchor:self.nameLabel.leadingAnchor].active = YES;
     [self.usernameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.usernameLabel.topAnchor constraintEqualToAnchor:self.nameLabel.bottomAnchor constant:1].active = YES;
-    
+    self.usernameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:6];
+
     
     self.tweetTextView.translatesAutoresizingMaskIntoConstraints = false;
     [self.tweetTextView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
@@ -118,6 +135,7 @@
     [self.tweetTextView.topAnchor constraintEqualToAnchor:self.profilePhotoImageView.bottomAnchor].active = YES;
     [self.tweetTextView.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
 
+    
 }
 
 -(void)onCancelButtonPressed {
