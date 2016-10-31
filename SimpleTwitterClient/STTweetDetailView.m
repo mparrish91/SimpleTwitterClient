@@ -34,8 +34,8 @@
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@",[tweet userName]];
     self.timeLabel.text = [self convertDate:[tweet timestamp]];
     self.tweetTextLabel.text = [tweet text];
-    self.retweetCountLabel.text = [NSString stringWithFormat:@"@%@",[tweet retweetCount]];
-    self.favoriteCountLabel.text = [NSString stringWithFormat:@"@%@",[tweet favoritesCount]];
+    self.retweetCountLabel.text = [NSString stringWithFormat:@"%@",[tweet retweetCount]];
+    self.favoriteCountLabel.text = [NSString stringWithFormat:@"%@",[tweet favoritesCount]];
 
     if (!tweet.retweet)
     {
@@ -50,7 +50,13 @@
     
     [self.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
 
-        
+    self.profilePhotoImageView.layer.cornerRadius = 8;
+    self.profilePhotoImageView.clipsToBounds = YES;
+    [self.likeButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.replyButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.likeButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+
+    
     return self;
 }
 
@@ -58,7 +64,7 @@
 - (NSString *)convertDate:(NSDate *)date
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd/mm/yy,HH:mm Z y"];
+    [dateFormat setDateFormat:@"MM/dd/yyyy, H:mm a"];
     NSString *resultString = [dateFormat stringFromDate:[NSDate date]];
 
     

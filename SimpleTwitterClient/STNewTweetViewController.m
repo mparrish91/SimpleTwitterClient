@@ -48,10 +48,13 @@
     self.textCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 1, 150, 40)];
     self.textCountLabel.text = @"140";
     self.textCountLabel.textColor = [UIColor whiteColor];
+    self.textCountLabel.font = [UIFont systemFontOfSize:13];
+
     self.textCountLabel.textAlignment = NSTextAlignmentCenter;
     [view addSubview:self.textCountLabel];
-//    self.navigationItem.titleView = view;
     [self.navigationController.navigationBar addSubview:view];
+    
+    self.tweetTextView.delegate = self;
 
     [self fetchUser];
     [self setConstraints];
@@ -95,7 +98,6 @@
     [view addSubview:self.tweetTextView];
     
     view.backgroundColor = [UIColor whiteColor];
-    self.tweetTextView.backgroundColor = [UIColor redColor];
 
 }
 
@@ -110,28 +112,31 @@
     
     self.profilePhotoImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.profilePhotoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor constant:5].active = YES;
-    [self.profilePhotoImageView.heightAnchor constraintEqualToConstant:30].active = YES;
-    [self.profilePhotoImageView.widthAnchor constraintEqualToConstant:30].active = YES;
+    [self.profilePhotoImageView.heightAnchor constraintEqualToConstant:45].active = YES;
+    [self.profilePhotoImageView.widthAnchor constraintEqualToConstant:45].active = YES;
     [self.profilePhotoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor constant:5].active = YES;
-    
+    self.profilePhotoImageView.layer.cornerRadius = 7;
+    self.profilePhotoImageView.clipsToBounds = YES;
+
     
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.profilePhotoImageView.trailingAnchor constant:2].active = YES;
+    [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.profilePhotoImageView.trailingAnchor constant:5].active = YES;
     [self.nameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.nameLabel.topAnchor constraintEqualToAnchor:self.profilePhotoImageView.topAnchor].active = YES;
-    self.nameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:7];
+    self.nameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:10];
 
     
     self.usernameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.usernameLabel.leadingAnchor constraintEqualToAnchor:self.nameLabel.leadingAnchor].active = YES;
     [self.usernameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.usernameLabel.topAnchor constraintEqualToAnchor:self.nameLabel.bottomAnchor constant:1].active = YES;
-    self.usernameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:6];
+    self.usernameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
+    self.usernameLabel.textColor = [UIColor lightGrayColor];
 
     
     self.tweetTextView.translatesAutoresizingMaskIntoConstraints = false;
     [self.tweetTextView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.usernameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.tweetTextView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.tweetTextView.topAnchor constraintEqualToAnchor:self.profilePhotoImageView.bottomAnchor].active = YES;
     [self.tweetTextView.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
 
