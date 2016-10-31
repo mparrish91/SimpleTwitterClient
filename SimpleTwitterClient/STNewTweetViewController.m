@@ -63,12 +63,24 @@
     [self.profilePhotoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
     
     
-    self.errorView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.errorView.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
-    [self.errorView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
-    [self.errorView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
-    [self.errorView.heightAnchor constraintEqualToConstant:30].active = YES;
+    self.nameLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.profilePhotoImageView.trailingAnchor constant:1].active = YES;
+    [self.nameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.nameLabel.topAnchor constraintEqualToAnchor:self.profilePhotoImageView.topAnchor].active = YES;
     
+    
+    self.usernameLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.usernameLabel.leadingAnchor constraintEqualToAnchor:self.nameLabel.leadingAnchor constant:1].active = YES;
+    [self.usernameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.usernameLabel.topAnchor constraintEqualToAnchor:self.nameLabel.bottomAnchor constant:1].active = YES;
+    
+    
+    self.tweetTextView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.tweetTextView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.usernameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.tweetTextView.topAnchor constraintEqualToAnchor:self.profilePhotoImageView.bottomAnchor].active = YES;
+    [self.tweetTextView.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
+
 }
 
 -(void)onCancelButtonPressed {
