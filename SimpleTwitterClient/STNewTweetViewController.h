@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STNewTweetViewController : UIViewController <UITextFieldDelegate>
+@interface STNewTweetViewController : UIViewController <UITextViewDelegate>
+
+@property(strong,readwrite,nonatomic) UILabel *nameLabel;
+@property(strong,readwrite,nonatomic) UILabel *usernameLabel;
+@property(strong,readwrite,nonatomic) UIImageView *profilePhotoImageView;
+
+@property(strong,readwrite,nonatomic) UITextView *tweetTextView;
+@property(strong,readwrite,nonatomic) UILabel *textCountLabel;
 
 @end

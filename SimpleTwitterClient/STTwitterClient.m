@@ -78,7 +78,7 @@
 
 }
 
-- (void)currentAccount:(NSURL *)url
+- (void)currentAccount:(SuccessHandler)success failure:(FailureHandler)failure
 {
         //get User info
         [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
@@ -87,13 +87,15 @@
             if ([responseObject isKindOfClass:[NSDictionary class]])
             {
                 STUser *user = [[STUser alloc]initWithServerRepresentation:responseObject];
-                NSLog(@"%@", user);
+                success(user);
+
             }
             
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"Unable to get data");
-            
+            failure(error);
+
         }];
 }
 

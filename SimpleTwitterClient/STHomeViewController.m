@@ -13,6 +13,7 @@
 #import "STTwitterClient.h"
 #import "NSDate+NSDate_TimeAgo.h"
 #import "STTweetDetailViewController.h"
+#import "STNewTweetViewController.h"
 
 @interface STHomeViewController ()
 
@@ -69,7 +70,7 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
     
-      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
+      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New"  style:UIBarButtonItemStylePlain target:self action:@selector(newTweet)];
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"twitter_logo"]];
     
@@ -212,6 +213,16 @@
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
 }
+
+
+-(void)newTweet
+{
+    STNewTweetViewController *newTweetVC = [[STNewTweetViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:newTweetVC];
+    [self.navigationController presentViewController:nav animated:true completion:nil];
+
+}
+
 
 
 -(NSString *)setTimeAgo: (NSDate *)date

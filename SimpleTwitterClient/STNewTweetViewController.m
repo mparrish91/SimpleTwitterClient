@@ -7,14 +7,13 @@
 //
 
 #import "STNewTweetViewController.h"
+#import "STTwitterClient.h"
+#import "STUser.h"
 
 @interface STNewTweetViewController ()
 
-@property(strong,readwrite,nonatomic) UILabel *nameLabel;
-@property(strong,readwrite,nonatomic) UILabel *usernameLabel;
-@property(strong,readwrite,nonatomic) UIImageView *profilePhotoImageView;
+@property(strong,nonatomic) STUser *user;
 
-@property(strong,readwrite,nonatomic) UITextView *tweetTextView;
 
 @end
 
@@ -43,16 +42,54 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"  style:UIBarButtonItemStylePlain target:self action:@selector(onCancelButtonPressed)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet"  style:UIBarButtonItemStylePlain target:self action:@selector(onTweetButtonPressed)];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
+    self.textCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
+    self.textCountLabel.text = @"140";
+    self.textCountLabel.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:self.textCountLabel];
+    self.navigationItem.titleView = view;
 
 
     [self setConstraints];
 
 }
 
+- (void)fetchUser
+{
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client currentAccount:^(id responseObject) {
+        
+        if([responseObject isKindOfClass:[STUser class]])
+        {
+            self.user = responseObject;
+
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
+
+- (void)loadView
+{
+    [super loadView];
+    
+    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.view = view;
+    [view addSubview:self.nameLabel];
+    [view addSubview:self.usernameLabel];
+    [view addSubview:self.profilePhotoImageView];
+    [view addSubview:self.tweetTextView];
+
+}
+
+
+
 -(void)setConstraints
 {
     
-    UIView *view= self.view;
     UILayoutGuide *margins = self.view.layoutMarginsGuide;
     
     
@@ -84,13 +121,26 @@
 }
 
 -(void)onCancelButtonPressed {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 -(void)onTweetButtonPressed {
     
 }
 
+-(void)textViewDidChange:(UITextView *)textView
+{
+    NSInteger length = [textView.text length];
+    
+    if ((int)length <= 140)
+    {
+        self.textCountLabel.text = [NSString stringWithFormat:@"%ld", (long)length];
+    }
+}
 
-
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return textView.text.length + (text.length - range.length) <= 140;
+}
 @end
