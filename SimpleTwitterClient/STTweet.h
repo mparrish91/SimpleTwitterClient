@@ -15,7 +15,7 @@
 + (NSArray *)tweetsWithArray:(NSDictionary *)dictionary;
 
 
-@property(strong,readwrite,nonatomic) NSString *text;
+@property(strong,readwrite,nonatomic) NSString *retweetName;
 
 @property(strong,readwrite,nonatomic) NSString *accountName;
 @property(strong,readwrite,nonatomic) NSString *userName;
@@ -25,6 +25,9 @@
 @property(readwrite,nonatomic) NSNumber *retweetCount;
 @property(readwrite,nonatomic) NSNumber *favoritesCount;
 @property(strong,readwrite,nonatomic) NSDate *timestamp;
+
+
+@property (nonatomic, assign) BOOL retweet;
 
 
 @end

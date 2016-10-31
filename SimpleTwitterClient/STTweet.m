@@ -16,6 +16,36 @@
     NSMutableDictionary *valuesForKeys = [NSMutableDictionary dictionary];
     id value = nil;
     
+    //check if retweet
+    if ([dict[@"retweeted_status"] isKindOfClass:[NSDictionary class]])
+    {
+        self.retweet = true;
+        
+        if ((value = dict[@"user"][@"name"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"retweetName"] = value;
+        
+        if ((value = dict[@"retweeted_status"][@"user"][@"screen_name"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"username"] = value;
+        
+        if ((value = dict[@"retweeted_status"][@"user"][@"name"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"name"] = value;
+        
+        if ((value = dict[@"retweeted_status"][@"user"][@"profile_image_url_https"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"avatarImagePath"] = value;
+        
+        if ((value = dict[@"retweeted_status"][@"text"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"text"] = value;
+        
+    }
+        
+    //if retweeted_status is nil
+    
+    if ((value = dict[@"retweeted_status"][@"user_mentions"][0][@"screen_name"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"username"] = value;
+    
+    if ((value = dict[@"entities"][@"user_mentions"][0][@"name"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"name"] = value;
+    
     if ((value = dict[@"text"]) && [value isKindOfClass:[NSString class]])
         valuesForKeys[@"text"] = value;
     
