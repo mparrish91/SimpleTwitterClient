@@ -12,6 +12,7 @@
 #import "STTweetTableViewCell.h"
 #import "STTwitterClient.h"
 #import "NSDate+NSDate_TimeAgo.h"
+#import "STTweetDetailViewController.h"
 
 @interface STHomeViewController ()
 
@@ -63,7 +64,7 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
     
-    self.tweetsTableView.estimatedRowHeight = 100;
+    self.tweetsTableView.estimatedRowHeight = 200;
     self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(presentFilterView)];
@@ -168,11 +169,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     
-    //    Business *business = [self.displayedItems objectAtIndex:indexPath.row];
-    
-    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithMovie:movie];
-    //    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithURL:[movie posterPath]];
-    //    [self.navigationController pushViewController:detailVC animated:true];
+        STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+        STTweetDetailViewController *detailVC = [[STTweetDetailViewController alloc]initWithTweet:tweet];
+        [self.navigationController pushViewController:detailVC animated:true];
 }
 
 

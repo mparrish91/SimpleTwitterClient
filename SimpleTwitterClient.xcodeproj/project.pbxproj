@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		422A7CCF1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 422A7CCE1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m */; };
+		422A7CD21DC70300000BF247 /* STTweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422A7CD11DC70300000BF247 /* STTweetDetailViewController.m */; };
+		422A7CD61DC703CE000BF247 /* STTweetDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 422A7CD41DC703CE000BF247 /* STTweetDetailView.m */; };
+		422A7CD71DC703CE000BF247 /* STTweetDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422A7CD51DC703CE000BF247 /* STTweetDetailView.xib */; };
 		4288C1431DC502FE00A3A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C1421DC502FE00A3A1D1 /* main.m */; };
 		4288C1461DC502FE00A3A1D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C1451DC502FE00A3A1D1 /* AppDelegate.m */; };
 		4288C14E1DC502FE00A3A1D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4288C14D1DC502FE00A3A1D1 /* Assets.xcassets */; };
@@ -27,6 +30,11 @@
 		3B5466A6D17FDC2A474A3D0F /* Pods-SimpleTwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleTwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleTwitterClient/Pods-SimpleTwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
 		422A7CCD1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDate_TimeAgo.h"; sourceTree = "<group>"; };
 		422A7CCE1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDate_TimeAgo.m"; sourceTree = "<group>"; };
+		422A7CD01DC70300000BF247 /* STTweetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTweetDetailViewController.h; sourceTree = "<group>"; };
+		422A7CD11DC70300000BF247 /* STTweetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTweetDetailViewController.m; sourceTree = "<group>"; };
+		422A7CD31DC703CE000BF247 /* STTweetDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTweetDetailView.h; sourceTree = "<group>"; };
+		422A7CD41DC703CE000BF247 /* STTweetDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTweetDetailView.m; sourceTree = "<group>"; };
+		422A7CD51DC703CE000BF247 /* STTweetDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STTweetDetailView.xib; sourceTree = "<group>"; };
 		4288C13E1DC502FE00A3A1D1 /* SimpleTwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4288C1421DC502FE00A3A1D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4288C1441DC502FE00A3A1D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -130,6 +138,8 @@
 				4288C15C1DC5060D00A3A1D1 /* STLoginViewController.m */,
 				42F355911DC67CF40055B7EE /* STHomeViewController.h */,
 				42F355921DC67CF40055B7EE /* STHomeViewController.m */,
+				422A7CD01DC70300000BF247 /* STTweetDetailViewController.h */,
+				422A7CD11DC70300000BF247 /* STTweetDetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -153,6 +163,9 @@
 				42F355941DC67D010055B7EE /* STTweetTableViewCell.h */,
 				42F355951DC67D010055B7EE /* STTweetTableViewCell.m */,
 				42F355961DC67D010055B7EE /* STTweetTableViewCell.xib */,
+				422A7CD31DC703CE000BF247 /* STTweetDetailView.h */,
+				422A7CD41DC703CE000BF247 /* STTweetDetailView.m */,
+				422A7CD51DC703CE000BF247 /* STTweetDetailView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -226,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422A7CD71DC703CE000BF247 /* STTweetDetailView.xib in Resources */,
 				4288C1511DC502FE00A3A1D1 /* LaunchScreen.storyboard in Resources */,
 				42F355981DC67D010055B7EE /* STTweetTableViewCell.xib in Resources */,
 				4288C14E1DC502FE00A3A1D1 /* Assets.xcassets in Resources */,
@@ -287,8 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422A7CD21DC70300000BF247 /* STTweetDetailViewController.m in Sources */,
 				4288C1601DC5411400A3A1D1 /* STTweet.m in Sources */,
 				4288C15D1DC5060D00A3A1D1 /* STLoginViewController.m in Sources */,
+				422A7CD61DC703CE000BF247 /* STTweetDetailView.m in Sources */,
 				4288C1751DC5BDB600A3A1D1 /* STTwitterClient.m in Sources */,
 				4288C1461DC502FE00A3A1D1 /* AppDelegate.m in Sources */,
 				42F355971DC67D010055B7EE /* STTweetTableViewCell.m in Sources */,
