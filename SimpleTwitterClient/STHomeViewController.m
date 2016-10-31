@@ -146,9 +146,13 @@
     cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
 
     
-    //TODO: handle if tweet is a retweet
-    cell.retweetLabel.hidden = true;
-    cell.retweetImageView.hidden = true;
+    if (!tweet.retweet)
+    {
+        //TODO: handle if tweet is a retweet
+        cell.retweetLabel.hidden = true;
+        cell.retweetImageView.hidden = true;
+    }
+
 
     
     

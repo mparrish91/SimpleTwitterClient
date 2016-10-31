@@ -36,34 +36,41 @@
         if ((value = dict[@"retweeted_status"][@"text"]) && [value isKindOfClass:[NSString class]])
             valuesForKeys[@"text"] = value;
         
-    }
+        //others?
+        if ((value = dict[@"retweeted_status"][@"retweet_count"]) && [value respondsToSelector:@selector(integerValue)])
+            valuesForKeys[@"retweetCount"] = value;
         
-    //if retweeted_status is nil
+        if ((value = dict[@"retweeted_status"][@"favorite_count"]) && [value respondsToSelector:@selector(integerValue)])
+            valuesForKeys[@"favoritesCount"] = value;
+    }
+    else
+    {
+        if ((value = dict[@"user"][@"screen_name"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"username"] = value;
+        
+        if ((value = dict[@"text"][@"name"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"name"] = value;
+        
+        
+        if ((value = dict[@"text"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"text"] = value;
+        
+        if ((value = dict[@"retweet_count"]) && [value respondsToSelector:@selector(integerValue)])
+            valuesForKeys[@"retweetCount"] = value;
+        
+        if ((value = dict[@"favorite_count"]) && [value respondsToSelector:@selector(integerValue)])
+            valuesForKeys[@"favoritesCount"] = value;
     
-    if ((value = dict[@"retweeted_status"][@"user_mentions"][0][@"screen_name"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"username"] = value;
-    
-    if ((value = dict[@"entities"][@"user_mentions"][0][@"name"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"name"] = value;
-    
-    if ((value = dict[@"text"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"text"] = value;
-    
-    if ((value = dict[@"retweet_count"]) && [value respondsToSelector:@selector(integerValue)])
-        valuesForKeys[@"retweetCount"] = value;
-    
-    if ((value = dict[@"favorite_count"]) && [value respondsToSelector:@selector(integerValue)])
-        valuesForKeys[@"favoritesCount"] = value;
+        
+        if ((value = dict[@"profile_image_url_https"]) && [value isKindOfClass:[NSString class]])
+        {
+            NSURL *url = [NSURL URLWithString: value];
+            valuesForKeys[@"profilePhotoURL"] = url;
+        }
+    }
     
     if ((value = dict[@"created_at"]) && [value isKindOfClass:[NSString class]])
         valuesForKeys[@"timestamp"] = [self convertStringToDate:value];
-    
-    if ((value = dict[@"profile_image_url_https"]) && [value isKindOfClass:[NSString class]])
-    {
-        NSURL *url = [NSURL URLWithString: value];
-        valuesForKeys[@"profilePhotoURL"] = url;
-    }
-    
     
     [self setValuesForKeysWithDictionary:valuesForKeys];
     
