@@ -103,7 +103,7 @@
 
 - (void)homeTimeline:(SuccessHandler)success failure:(FailureHandler)failure
 {
-        [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        [self GET:@"https://api.twitter.com/1.1/statuses/home_timeline.json?count=20" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
 
             NSArray *tweets = [STTweet tweetsWithArray:responseObject];
             success(tweets);
