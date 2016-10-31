@@ -143,6 +143,7 @@
     cell.usernameLabel.text = [tweet userName];
     cell.tweetTextLabel.text = [tweet text];
     cell.nameLabel.text = [tweet accountName];
+    cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
 
     
     //TODO: handle if tweet is a retweet
@@ -153,7 +154,6 @@
     
 
     cell.tweetTextLabel.text = [tweet text];
-//    cell.timeLabel.text = [tweet timestamp];;
   
     
 //    NSURL *photoImageURL = [tweet avatarImagePath];
@@ -221,13 +221,13 @@
     
     NSDate *currentDate = [[NSDate alloc]init];
     
-    NSInteger daysFrom = [currentDate daysFrom:date];
+    NSInteger minFrom = [currentDate minutesFrom:date];
     NSInteger hoursFrom = [currentDate hoursFrom:date];
 
     //if more than 24 hours have passed
-    if (hoursFrom > 24)
+    if ((int)minFrom < 60)
     {
-        NSString *timeAgo = [NSString stringWithFormat:@"%ldd", (long)daysFrom];
+        NSString *timeAgo = [NSString stringWithFormat:@"%ldm", (long)minFrom];
         return timeAgo;
     }
     else{

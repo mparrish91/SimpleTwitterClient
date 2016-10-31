@@ -11,14 +11,14 @@
 @implementation NSDate (NSDate_TimeAgo)
 
 
-- (NSInteger)daysFrom:(NSDate *)date
+- (NSInteger)minutesFrom:(NSDate *)date
 {
-    return [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:date toDate:self options:NSCalendarWrapComponents].day;
+    return [[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:date toDate:self options:nil].minute;
 }
 
 - (NSInteger)hoursFrom:(NSDate *)date;
 {
-    return [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:date toDate:self options:NSCalendarWrapComponents].hour;
+    return [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:date toDate:self options:nil].hour;
 
 }
 

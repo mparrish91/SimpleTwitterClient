@@ -10,7 +10,7 @@
 
 @interface NSDate (NSDate_TimeAgo)
 
-- (NSInteger)daysFrom:(NSDate *)date;
+- (NSInteger)minutesFrom:(NSDate *)date;
 - (NSInteger)hoursFrom:(NSDate *)date;
 
 @end
