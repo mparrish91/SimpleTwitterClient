@@ -156,7 +156,7 @@
     cell.tweetTextLabel.text = [tweet text];
   
 
-    NSURL *photoImageURL = [tweet avatarImagePath];
+    NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]];
     
     [cell.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
     

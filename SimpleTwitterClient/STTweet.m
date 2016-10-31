@@ -25,10 +25,10 @@
             valuesForKeys[@"retweetName"] = value;
         
         if ((value = dict[@"retweeted_status"][@"user"][@"screen_name"]) && [value isKindOfClass:[NSString class]])
-            valuesForKeys[@"username"] = value;
+            valuesForKeys[@"userName"] = value;
         
         if ((value = dict[@"retweeted_status"][@"user"][@"name"]) && [value isKindOfClass:[NSString class]])
-            valuesForKeys[@"name"] = value;
+            valuesForKeys[@"accountName"] = value;
         
         if ((value = dict[@"retweeted_status"][@"user"][@"profile_image_url_https"]) && [value isKindOfClass:[NSString class]])
             valuesForKeys[@"avatarImagePath"] = value;
@@ -46,10 +46,10 @@
     else
     {
         if ((value = dict[@"user"][@"screen_name"]) && [value isKindOfClass:[NSString class]])
-            valuesForKeys[@"username"] = value;
+            valuesForKeys[@"userName"] = value;
         
-        if ((value = dict[@"text"][@"name"]) && [value isKindOfClass:[NSString class]])
-            valuesForKeys[@"name"] = value;
+        if ((value = dict[@"user"][@"name"]) && [value isKindOfClass:[NSString class]])
+            valuesForKeys[@"accountName"] = value;
         
         
         if ((value = dict[@"text"]) && [value isKindOfClass:[NSString class]])

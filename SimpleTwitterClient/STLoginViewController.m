@@ -96,7 +96,7 @@
 
     [self.loginButton.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
     [self.loginButton.widthAnchor constraintEqualToConstant:200].active = YES;
-    [self.loginButton.heightAnchor constraintEqualToConstant:10].active = YES;
+    [self.loginButton.heightAnchor constraintEqualToConstant:80].active = YES;
 
     [self.loginButton setTitle:@"Login to Twitter" forState:UIControlStateNormal];
     self.loginButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:13];
