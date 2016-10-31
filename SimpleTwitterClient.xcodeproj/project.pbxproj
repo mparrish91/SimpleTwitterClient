@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422A7CCF1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 422A7CCE1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m */; };
 		4288C1431DC502FE00A3A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C1421DC502FE00A3A1D1 /* main.m */; };
 		4288C1461DC502FE00A3A1D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4288C1451DC502FE00A3A1D1 /* AppDelegate.m */; };
 		4288C14E1DC502FE00A3A1D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4288C14D1DC502FE00A3A1D1 /* Assets.xcassets */; };
@@ -24,6 +25,8 @@
 /* Begin PBXFileReference section */
 		2E1C736945EF5F4EA162E441 /* Pods_SimpleTwitterClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleTwitterClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5466A6D17FDC2A474A3D0F /* Pods-SimpleTwitterClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleTwitterClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleTwitterClient/Pods-SimpleTwitterClient.debug.xcconfig"; sourceTree = "<group>"; };
+		422A7CCD1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDate_TimeAgo.h"; sourceTree = "<group>"; };
+		422A7CCE1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDate_TimeAgo.m"; sourceTree = "<group>"; };
 		4288C13E1DC502FE00A3A1D1 /* SimpleTwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4288C1421DC502FE00A3A1D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4288C1441DC502FE00A3A1D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +71,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		422A7CCC1DC6C264000BF247 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				422A7CCD1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.h */,
+				422A7CCE1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		4288C1351DC502FE00A3A1D1 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,7 @@
 		4288C1401DC502FE00A3A1D1 /* SimpleTwitterClient */ = {
 			isa = PBXGroup;
 			children = (
+				422A7CCC1DC6C264000BF247 /* Helpers */,
 				4288C15A1DC5038C00A3A1D1 /* Views */,
 				4288C1581DC5037900A3A1D1 /* ViewControllers */,
 				4288C1591DC5038200A3A1D1 /* Models */,
@@ -281,6 +294,7 @@
 				42F355971DC67D010055B7EE /* STTweetTableViewCell.m in Sources */,
 				4288C1431DC502FE00A3A1D1 /* main.m in Sources */,
 				42F355931DC67CF40055B7EE /* STHomeViewController.m in Sources */,
+				422A7CCF1DC6C35B000BF247 /* NSDate+NSDate_TimeAgo.m in Sources */,
 				4288C1631DC5411C00A3A1D1 /* STUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

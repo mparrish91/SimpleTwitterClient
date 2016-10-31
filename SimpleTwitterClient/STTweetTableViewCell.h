@@ -11,6 +11,7 @@
 
 @interface STTweetTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *retweetImageView;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

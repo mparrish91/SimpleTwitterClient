@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "STTweetTableViewCell.h"
 #import "STTwitterClient.h"
+#import "NSDate+NSDate_TimeAgo.h"
 
 @interface STHomeViewController ()
 
@@ -54,7 +55,7 @@
     
     //tableview
     NSString *cellIdentifier = @"cell";
-    [self.tweetsTableView registerClass:[STTweetTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+//    [self.tweetsTableView registerClass:[STTweetTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     self.tweetsTableView.delegate = self;
     self.tweetsTableView.dataSource = self;
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -120,16 +121,15 @@
 
 - (STTweetTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cell";
-    STTweetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+    static NSString *cellIdentifier = @"cell";
+    STTweetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (cell == nil)
     {
-        [tableView registerNib:[UINib nibWithNibName:@"MyCustomCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        [tableView registerNib:[UINib nibWithNibName:@"STTweetTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     }
-    
     
     return cell;
 }
@@ -140,19 +140,26 @@
     
     
     STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-    cell.retweetLabel.text = [tweet retweetCount];
-    cell.nameLabel.text = [tweet accountName];
     cell.usernameLabel.text = [tweet userName];
+    cell.tweetTextLabel.text = [tweet text];
+    cell.nameLabel.text = [tweet accountName];
+
+    
+    //TODO: handle if tweet is a retweet
+    cell.retweetLabel.hidden = true;
+    cell.retweetImageView.hidden = true;
+
+    
     
 
     cell.tweetTextLabel.text = [tweet text];
-    cell.timeLabel.text = [tweet timestamp];;
+//    cell.timeLabel.text = [tweet timestamp];;
   
     
-    NSURL *photoImageURL = [tweet avatarImagePath];
+//    NSURL *photoImageURL = [tweet avatarImagePath];
     
     
-    [cell.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
+//    [cell.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -207,6 +214,30 @@
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
 }
+
+
+-(NSString *)setTimeAgo: (NSDate *)date
+{
+    
+    NSDate *currentDate = [[NSDate alloc]init];
+    
+    NSInteger daysFrom = [currentDate daysFrom:date];
+    NSInteger hoursFrom = [currentDate hoursFrom:date];
+
+    //if more than 24 hours have passed
+    if (hoursFrom > 24)
+    {
+        NSString *timeAgo = [NSString stringWithFormat:@"%ldd", (long)daysFrom];
+        return timeAgo;
+    }
+    else{
+        NSString *timeAgo = [NSString stringWithFormat:@"%ldh", (long)hoursFrom];
+        return timeAgo;
+    }
+
+
+}
+
 
 
 
