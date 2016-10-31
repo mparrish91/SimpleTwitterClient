@@ -45,63 +45,68 @@
                         <constraint firstAttribute="width" constant="10" id="tG0-04-DeJ"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iNT-jM-nGh">
-                    <frame key="frameInset" minX="9" minY="178" width="343" height="7"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNT-jM-nGh">
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="WuF-sf-aVj"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vN0-GP-li1">
-                    <frame key="frameInset" minX="9" minY="215" width="343" height="7"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vN0-GP-li1">
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qXf-2u-aKE"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wSB-Ib-JFU">
-                    <frame key="frameInset" minX="9" minY="277" width="366" height="7"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSB-Ib-JFU">
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="aGa-Kg-RH7"/>
+                    </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7e-UN-8Ff">
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FAVORITES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzS-3a-ToS">
-                    <frame key="frameInset" minX="182" minY="192" width="57" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAVORITES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzS-3a-ToS">
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH9-kN-q4k">
-                    <frame key="frameInset" minX="10" minY="192" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH9-kN-q4k">
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-SB-Oly" customClass="STTwe">
-                    <frame key="frameInset" minX="131" minY="192" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-SB-Oly" customClass="STTwe">
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RETWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abo-jv-Ejo">
-                    <frame key="frameInset" minX="60" minY="192" width="56" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abo-jv-Ejo">
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye5-UF-jlU">
-                    <frame key="frameInset" minX="24" minY="250" width="34" height="14"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye5-UF-jlU">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="Mci-mM-tmB"/>
+                        <constraint firstAttribute="height" constant="10" id="sMt-TE-GB2"/>
+                    </constraints>
                     <state key="normal" title="Button" image="twitter_reply"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3y-Zn-LVa">
-                    <frame key="frameInset" minX="136" minY="247" width="60" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3y-Zn-LVa">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="9bh-pn-Q8L"/>
+                        <constraint firstAttribute="width" constant="10" id="Ugl-gs-cHh"/>
+                    </constraints>
                     <state key="normal" title="Button" image="twitter_retweet"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUK-Mv-ZPS">
-                    <frame key="frameInset" minX="287" minY="242" width="31" height="29"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUK-Mv-ZPS">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="ShP-d0-klL"/>
+                        <constraint firstAttribute="height" constant="10" id="csB-pY-ZYh"/>
+                    </constraints>
                     <state key="normal" title="Button" image="twitter_like"/>
                 </button>
             </subviews>
@@ -118,8 +123,10 @@
                 <constraint firstItem="I1W-Rl-oUI" firstAttribute="leading" secondItem="2rn-ZN-Foq" secondAttribute="leading" id="FoH-DH-eMh"/>
                 <constraint firstItem="MzS-3a-ToS" firstAttribute="leading" secondItem="dhB-SB-Oly" secondAttribute="trailing" constant="9" id="GAe-8M-zHj"/>
                 <constraint firstAttribute="trailingMargin" secondItem="I1W-Rl-oUI" secondAttribute="trailing" id="I1L-Iu-fGM"/>
+                <constraint firstItem="wSB-Ib-JFU" firstAttribute="leading" secondItem="hHZ-gU-4YK" secondAttribute="leadingMargin" id="IGG-xR-zZf"/>
                 <constraint firstItem="7Jh-n8-njA" firstAttribute="top" secondItem="hHZ-gU-4YK" secondAttribute="topMargin" id="IQX-t3-5Bl"/>
                 <constraint firstItem="dhB-SB-Oly" firstAttribute="leading" secondItem="Abo-jv-Ejo" secondAttribute="trailing" constant="15" id="JE5-aW-RLD"/>
+                <constraint firstAttribute="trailingMargin" secondItem="wSB-Ib-JFU" secondAttribute="trailing" id="KmA-Py-bJ6"/>
                 <constraint firstItem="7Jh-n8-njA" firstAttribute="leading" secondItem="hHZ-gU-4YK" secondAttribute="leadingMargin" constant="58" id="N4M-dJ-9hQ"/>
                 <constraint firstItem="MzS-3a-ToS" firstAttribute="centerY" secondItem="dhB-SB-Oly" secondAttribute="centerY" id="PF7-S4-hed"/>
                 <constraint firstItem="iNT-jM-nGh" firstAttribute="top" secondItem="Z7e-UN-8Ff" secondAttribute="bottom" constant="5" id="Q1x-cW-i24"/>
