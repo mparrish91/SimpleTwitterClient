@@ -36,4 +36,34 @@
     return self;
 }
 
+
+@synthesize currentUser = _currentUser;
+
+- (void)setCurrentUser:(STUser *)currentUser
+{
+    [[NSUserDefaults standardUserDefaults]setObject:currentUser forKey:@"currentUserData"];
+
+ 
+}
+
+- (STUser *)currentUser
+{
+    return [[NSUserDefaults standardUserDefaults]objectForKey:@"someProperty"];
+    
+    if (!_currentUser)
+    {
+        NSData *userData = [[NSUserDefaults standardUserDefaults]objectForKey:@"currentUserData"];
+        
+        if (userData)
+        {
+            NSError *e = nil;
+            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData: userData options: NSJSONReadingMutableContainers error: &e];
+            _currentUser = [[STUser alloc]initWithServerRepresentation:dictionary];
+            
+        }
+    }
+    return _currentUser;
+    
+}
+
 @end

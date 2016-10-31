@@ -16,5 +16,6 @@
 @property(strong,readonly,nonatomic) NSString *username;
 @property(strong,readonly,nonatomic) NSURL *profilePhotoURL;
 @property(strong,readonly,nonatomic) NSString *bio;
+@property(strong,readonly,nonatomic) STUser *currentUser;
 
 @end
