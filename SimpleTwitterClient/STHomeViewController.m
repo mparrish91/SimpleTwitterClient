@@ -142,7 +142,7 @@
     STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
     cell.retweetLabel.text = [tweet retweetName];
     cell.nameLabel.text = [tweet accountName];
-    cell.usernameLabel.text = [tweet userName];
+    cell.usernameLabel.text = [NSString stringWithFormat:@"@%@",[tweet userName]];
     cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
     cell.tweetTextLabel.text = [tweet text];
 
