@@ -8,6 +8,7 @@
 
 #import "STTweetDetailView.h"
 #import "STTweet.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation STTweetDetailView
 
@@ -36,7 +37,19 @@
     self.retweetCountLabel.text = [NSString stringWithFormat:@"@%@",[tweet retweetCount]];
     self.favoriteCountLabel.text = [NSString stringWithFormat:@"@%@",[tweet favoritesCount]];
 
+    if (!tweet.retweet)
+    {
+        self.retweetLabel.hidden = true;
+        self.retweetImageView.hidden = true;
+    }
     
+    self.tweetTextLabel.text = [tweet text];
+    
+    
+    NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]];
+    
+    [self.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
+
         
     return self;
 }

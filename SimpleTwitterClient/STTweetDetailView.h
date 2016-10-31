@@ -5,7 +5,7 @@
 //  Created by parry on 10/29/16.
 //  Copyright © 2016 parry. All rights reserved.
 //
-
+#import "STTweet.h"
 #import <UIKit/UIKit.h>
 
 @interface STTweetDetailView : UIView
@@ -23,5 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *retweetImageView;
+
+
+- (instancetype)initWithTweet:(STTweet *)tweet;
 
 @end
