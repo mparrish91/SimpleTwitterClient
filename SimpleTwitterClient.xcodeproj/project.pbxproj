@@ -51,6 +51,7 @@
 		4288C1621DC5411C00A3A1D1 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
 		4288C1731DC5BDB600A3A1D1 /* STTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterClient.h; sourceTree = "<group>"; };
 		4288C1741DC5BDB600A3A1D1 /* STTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterClient.m; sourceTree = "<group>"; };
+		42B837AA1DC805A0009BA5DA /* SimpleTwitterClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleTwitterClient.entitlements; sourceTree = "<group>"; };
 		42C678E11DC723190084EF7B /* STNewTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNewTweetViewController.h; sourceTree = "<group>"; };
 		42C678E21DC723190084EF7B /* STNewTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNewTweetViewController.m; sourceTree = "<group>"; };
 		42F355911DC67CF40055B7EE /* STHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHomeViewController.h; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		4288C1401DC502FE00A3A1D1 /* SimpleTwitterClient */ = {
 			isa = PBXGroup;
 			children = (
+				42B837AA1DC805A0009BA5DA /* SimpleTwitterClient.entitlements */,
 				422A7CCC1DC6C264000BF247 /* Helpers */,
 				4288C15A1DC5038C00A3A1D1 /* Views */,
 				4288C1581DC5037900A3A1D1 /* ViewControllers */,
@@ -217,7 +219,13 @@
 				TargetAttributes = {
 					4288C13D1DC502FE00A3A1D1 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = QF43K5VRQT;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -430,6 +438,8 @@
 			baseConfigurationReference = 3B5466A6D17FDC2A474A3D0F /* Pods-SimpleTwitterClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleTwitterClient/SimpleTwitterClient.entitlements;
+				DEVELOPMENT_TEAM = QF43K5VRQT;
 				INFOPLIST_FILE = SimpleTwitterClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CodePath.SimpleTwitterClient;
@@ -442,6 +452,8 @@
 			baseConfigurationReference = 912E9D7B49767D53B1CEF5DE /* Pods-SimpleTwitterClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleTwitterClient/SimpleTwitterClient.entitlements;
+				DEVELOPMENT_TEAM = QF43K5VRQT;
 				INFOPLIST_FILE = SimpleTwitterClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CodePath.SimpleTwitterClient;

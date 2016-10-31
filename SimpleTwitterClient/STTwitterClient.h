@@ -25,6 +25,7 @@ typedef void(^FailureHandler)(NSError *error);
 - (void)login:(SuccessHandler)success failure:(FailureHandler)failure;
 - (void)homeTimeline:(SuccessHandler)success failure:(FailureHandler)failure;
 - (void)currentAccount:(SuccessHandler)success failure:(FailureHandler)failure;
+- (void)logout;
 
 
 + (instancetype)sharedInstance;

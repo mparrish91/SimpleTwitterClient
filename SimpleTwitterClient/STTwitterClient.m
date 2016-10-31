@@ -10,6 +10,7 @@
 #import "BDBOAuth1SessionManager.h"
 #import "STUser.h"
 #import "STTweet.h"
+#import "STLoginViewController.h"
 
 
 #define twitterUrl @"https://api.twitter.com"
@@ -57,6 +58,18 @@
     
 }
 
+- (void)logout
+{
+    STUser.currentUser = nil;
+    [self deauthorize];
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"userDidLogout"
+     object:self];
+
+}
+
+
 - (void)handleOpenURL:(NSURL *)url
 
 {
@@ -64,18 +77,27 @@
     [self fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:requestToken success:^(BDBOAuth1Credential *accessToken) {
         NSLog(@"I got the access token!");
         
-        if (self.successHandler)
-            self.successHandler(nil);
-
-        
-        } failure:^(NSError *error) {
-            NSLog(@"Unable to get data");
+        [self currentAccount:^(id responseObject) {
             
-            self.failureHandler(error);
-
-
+        if([responseObject isKindOfClass:[STUser class]])
+            STUser.currentUser = responseObject;
+    
+            if (self.successHandler)
+                self.successHandler(nil);
+        } failure:^(NSError *error) {
+            if (self.failureHandler)
+                self.failureHandler(error);
         }];
-
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Unable to get data");
+        
+        if (self.failureHandler)
+            self.failureHandler(error);
+        
+        
+    }];
+    
 }
 
 - (void)currentAccount:(SuccessHandler)success failure:(FailureHandler)failure

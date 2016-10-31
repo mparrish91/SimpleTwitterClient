@@ -63,13 +63,15 @@ static STUser * _currentUser;
 {
     _currentUser = currentUser;
     
+    // Unwrap user and save serialized (dict) info to defaults
     NSError *e = nil;
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData: _currentUser.userDictionary options: NSJSONReadingMutableContainers error: &e];
     
     if (data)
     {
         [[NSUserDefaults standardUserDefaults]setObject:currentUser forKey:@"currentUserData"];
-        
+        NSLog(@"Serialized current user and saving to defaults");
+
     }
     else{
         [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"currentUserData"];

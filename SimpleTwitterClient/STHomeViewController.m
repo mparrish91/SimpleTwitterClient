@@ -226,8 +226,8 @@
 -(void)signOut
 {
     STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client deauthorize];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [client logout];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
