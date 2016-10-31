@@ -10,6 +10,8 @@
 
 @implementation STUser
 
+static STUser * _currentUser;
+
 - (instancetype)initWithServerRepresentation:(NSDictionary *)dict
 {
     
@@ -37,18 +39,8 @@
 }
 
 
-@synthesize currentUser = _currentUser;
-
-- (void)setCurrentUser:(STUser *)currentUser
++ (STUser *)currentUser
 {
-    [[NSUserDefaults standardUserDefaults]setObject:currentUser forKey:@"currentUserData"];
-
- 
-}
-
-- (STUser *)currentUser
-{
-    return [[NSUserDefaults standardUserDefaults]objectForKey:@"someProperty"];
     
     if (!_currentUser)
     {
@@ -65,5 +57,29 @@
     return _currentUser;
     
 }
+
+
++ (void)setCurrentUser:(STUser *)currentUser
+{
+    _currentUser = currentUser;
+    
+    NSError *e = nil;
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData: _currentUser.userDictionary options: NSJSONReadingMutableContainers error: &e];
+    
+    if (data)
+    {
+        [[NSUserDefaults standardUserDefaults]setObject:currentUser forKey:@"currentUserData"];
+        
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults]setObject:nil forKey:@"currentUserData"];
+        
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+
 
 @end

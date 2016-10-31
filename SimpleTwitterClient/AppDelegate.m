@@ -34,6 +34,8 @@
 
     
     
+    if user
+    
     STLoginViewController *businessVC =[[STLoginViewController alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:businessVC];
     

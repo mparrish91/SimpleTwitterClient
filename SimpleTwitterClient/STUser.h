@@ -18,4 +18,11 @@
 @property(strong,readonly,nonatomic) NSString *bio;
 @property(strong,readonly,nonatomic) STUser *currentUser;
 
+//+ (STUser *)currentUser;
+
+@property(strong,readonly,nonatomic) NSData *userDictionary;
+@property (class) STUser *currentUser;
+
+
+
 @end
