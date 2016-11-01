@@ -1,6 +1,6 @@
 # Project 3 - *SimpleTwitterClient*
 
-**Flicks** is a movies app using the [The Yelp API](https://dev.twitter.com/docs).  Built in Objective C. Using Xibs
+**SimpleTwitterClient** is a twitter app using [The Twitter API](https://dev.twitter.com/docs).  Built in Objective C. Using Xibs
 
 Time spent: **20+** hours spent in total
 
