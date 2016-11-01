@@ -14,6 +14,8 @@ static STUser * _currentUser;
 
 - (instancetype)initWithServerRepresentation:(NSDictionary *)dict
 {
+    self.userDictionary = [[NSDictionary alloc]init];
+
     
     NSMutableDictionary *valuesForKeys = [NSMutableDictionary dictionary];
     id value = nil;

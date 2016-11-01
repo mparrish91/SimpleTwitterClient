@@ -27,7 +27,8 @@ typedef void(^FailureHandler)(NSError *error);
 - (void)currentAccount:(SuccessHandler)success failure:(FailureHandler)failure;
 - (void)logout;
 - (void)sendNewPost: (NSString *)content success:(SuccessHandler)success failure:(FailureHandler)failure;
-
+- (void)reTweet: (NSString *)tweetID success:(SuccessHandler)success failure:(FailureHandler)failure;
+- (void)favorite: (NSString *)tweetID success:(SuccessHandler)success failure:(FailureHandler)failure;
 
 + (instancetype)sharedInstance;
 

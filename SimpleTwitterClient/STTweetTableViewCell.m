@@ -7,6 +7,7 @@
 //
 
 #import "STTweetTableViewCell.h"
+#import "STTwitterClient.h"
 
 @implementation STTweetTableViewCell
 
@@ -16,6 +17,22 @@
     
     self.profilePhotoImageView.layer.cornerRadius = 15;
     self.profilePhotoImageView.clipsToBounds = YES;
+}
+- (IBAction)onReplyButtonPressed:(id)sender {
+    
+
+}
+
+- (IBAction)onRetweetButtonPressed:(id)sender {
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client reTweet:<#(NSString *)#> success:<#^(id responseObject)success#> failure:<#^(NSError *error)failure#>
+
+}
+
+- (IBAction)onFavoriteButtonPressed:(id)sender {
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client login:^(id responseObject) {
+
 }
 
 @end

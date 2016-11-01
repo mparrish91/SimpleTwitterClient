@@ -20,7 +20,7 @@
 
 //+ (STUser *)currentUser;
 
-@property(strong,readonly,nonatomic) NSData *userDictionary;
+@property(strong,readwrite,nonatomic) NSDictionary *userDictionary;
 @property (class) STUser *currentUser;
 
 

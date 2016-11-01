@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="501" height="93"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="501" height="92"/>
+                <frame key="frameInset" width="501" height="92.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="Uiw-cv-9Bc">
@@ -60,6 +60,9 @@
                         </constraints>
                         <state key="normal" title="Button" image="twitter_reply"/>
                         <state key="selected" image="twitter_reply_on"/>
+                        <connections>
+                            <action selector="onReplyButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ggo-HD-Fpb"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9i-Gx-xjM">
                         <constraints>
@@ -68,6 +71,9 @@
                         </constraints>
                         <state key="normal" title="Button" image="twitter_like"/>
                         <state key="selected" image="twitter_like_on"/>
+                        <connections>
+                            <action selector="onFavoriteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Xgz-fO-yDB"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cc5-VF-0eR">
                         <constraints>
@@ -76,6 +82,9 @@
                         </constraints>
                         <state key="normal" title="Button" image="twitter_retweet"/>
                         <state key="selected" image="twitter_retweet_on"/>
+                        <connections>
+                            <action selector="onRetweetButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PtU-oQ-quO"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
