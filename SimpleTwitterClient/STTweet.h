@@ -30,5 +30,7 @@
 
 @property (nonatomic, assign) BOOL retweet;
 
+@property(strong,readwrite,nonatomic) NSString *id;
+
 
 @end

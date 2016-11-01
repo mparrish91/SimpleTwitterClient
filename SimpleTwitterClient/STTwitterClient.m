@@ -151,6 +151,36 @@
     
 }
 
+- (void)reTweet: (NSString *)tweetID success:(SuccessHandler)success failure:(FailureHandler)failure
+{
+    
+    NSString *requestString =[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json", tweetID];
+                              
+    [self POST:requestString parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"Twitter HTTP response %@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Twitter HTTP response %@", error.localizedDescription);
+        
+    }];
+
+
+}
+
+- (void)favorite: (NSString *)tweetID success:(SuccessHandler)success failure:(FailureHandler)failure
+{
+    
+    NSString *requestString =[NSString stringWithFormat:@"https://api.twitter.com/1.1/favorites/create.json?id=%@", tweetID];
+    
+    [self POST:requestString parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"Twitter HTTP response %@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Twitter HTTP response %@", error.localizedDescription);
+        
+    }];
+    
+    
+}
+
 
 
 @end
