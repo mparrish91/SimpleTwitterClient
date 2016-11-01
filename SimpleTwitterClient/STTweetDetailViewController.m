@@ -10,6 +10,7 @@
 #import "STTweetDetailView.h"
 #import "STTweet.h"
 #import "STNewTweetViewController.h"
+#import "STTwitterClient.h"
 
 @interface STTweetDetailViewController ()
 @property(strong,nonatomic) STTweetDetailView *detailView;
@@ -23,7 +24,7 @@
 - (instancetype)initWithTweet:(STTweet *)tweet
 {
     self.detailView = [[STTweetDetailView alloc]initWithTweet: tweet];
-    
+    self.detailView.delegate = self;
     
     if (!(self = [super init]))
         return nil;
