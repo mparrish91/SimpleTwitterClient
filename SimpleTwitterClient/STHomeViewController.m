@@ -147,6 +147,7 @@
     cell.usernameLabel.text = [NSString stringWithFormat:@"@%@",[tweet userName]];
     cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
     cell.tweetTextLabel.text = [tweet text];
+    cell.delegate = self;
 
     
     if (!tweet.retweet)
@@ -267,12 +268,25 @@
 
 -(void)stTweetCellReTweetButtonDidChange:(STTweet *)tweet value:(BOOL)value
 {
-    
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client reTweet:[tweet id] success:^(id responseObject) {
+        NSLog(@"Sucess");
+    } failure:^(NSError *error) {
+        NSLog(@"error");
+
+    }];
+
 }
 
 -(void)stTweetCellFavoriteButtonDidChange:(STTweet *)tweet value:(BOOL)value
 {
-    
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client favorite:[tweet id] success:^(id responseObject) {
+        NSLog(@"Sucess");
+    } failure:^(NSError *error) {
+        NSLog(@"error");
+        
+    }];
 }
 
 

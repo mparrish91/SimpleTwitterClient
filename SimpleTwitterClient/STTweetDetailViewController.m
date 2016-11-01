@@ -9,6 +9,7 @@
 #import "STTweetDetailViewController.h"
 #import "STTweetDetailView.h"
 #import "STTweet.h"
+#import "STNewTweetViewController.h"
 
 @interface STTweetDetailViewController ()
 @property(strong,nonatomic) STTweetDetailView *detailView;
@@ -79,6 +80,43 @@
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
 }
+
+
+//STTweetDetailViewCellDelegate
+
+-(void)stTweetDetailReplyButtonDidChange:(STTweet *)tweet value:(BOOL)value
+{
+    STNewTweetViewController *newTweetVC = [[STNewTweetViewController alloc]init];
+    newTweetVC.tweetTextView.text = @"@%@",[tweet userName];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:newTweetVC];
+    [self.navigationController presentViewController:nav animated:true completion:nil];
+    
+}
+
+-(void)stTweetDetailReTweetButtonDidChange:(STTweet *)tweet value:(BOOL)value
+{
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client reTweet:[tweet id] success:^(id responseObject) {
+        NSLog(@"Sucess");
+    } failure:^(NSError *error) {
+        NSLog(@"error");
+        
+    }];
+    
+}
+
+-(void)stTweetDetailFavoriteButtonDidChange:(STTweet *)tweet value:(BOOL)value
+{
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client favorite:[tweet id] success:^(id responseObject) {
+        NSLog(@"Sucess");
+    } failure:^(NSError *error) {
+        NSLog(@"error");
+        
+    }];
+}
+
+
 
 
 @end

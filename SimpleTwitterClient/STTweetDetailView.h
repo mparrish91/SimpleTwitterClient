@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *retweetImageView;
+@property(strong,readwrite,nonatomic) STTweet *tweet;
 
 
 - (instancetype)initWithTweet:(STTweet *)tweet;

@@ -72,14 +72,22 @@
 }
 
 - (IBAction)onReplyButtonPressed:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(stTweetDetailReplyButtonDidChange:value:)]) {
+        [self.delegate stTweetDetailReplyButtonDidChange:self.tweet value:true];
+    }
 }
 
 - (IBAction)onRetweetButtonPressed:(id)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(stTweetDetailReTweetButtonDidChange:value:)]) {
+        [self.delegate stTweetDetailReTweetButtonDidChange:self.tweet value:true];
+    }
      }
 
 - (IBAction)onFavoriteButtonPressed:(id)sender {
-         
+    if ([self.delegate respondsToSelector:@selector(stTweetDetailFavoriteButtonDidChange:value:)]) {
+        [self.delegate stTweetDetailFavoriteButtonDidChange:self.tweet value:true];
+    }
+    
          }
 
 @end
