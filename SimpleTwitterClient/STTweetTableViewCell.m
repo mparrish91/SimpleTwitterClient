@@ -19,19 +19,15 @@
     self.profilePhotoImageView.clipsToBounds = YES;
 }
 - (IBAction)onReplyButtonPressed:(id)sender {
-    
+    NSString *id = self.tweet.id;
 
 }
 
 - (IBAction)onRetweetButtonPressed:(id)sender {
-    STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client reTweet:<#(NSString *)#> success:<#^(id responseObject)success#> failure:<#^(NSError *error)failure#>
 
 }
 
 - (IBAction)onFavoriteButtonPressed:(id)sender {
-    STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client login:^(id responseObject) {
 
 }
 

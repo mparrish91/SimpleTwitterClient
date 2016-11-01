@@ -5,7 +5,7 @@
 //  Created by parry on 10/29/16.
 //  Copyright © 2016 parry. All rights reserved.
 //
-
+#import "STTweet.h"
 #import <UIKit/UIKit.h>
 
 
@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
+@property(strong,readwrite,nonatomic) STTweet *tweet;
 
 @end

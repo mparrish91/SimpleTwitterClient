@@ -71,6 +71,15 @@
     return resultString;
 }
 
+- (IBAction)onReplyButtonPressed:(id)sender {
+}
 
+- (IBAction)onRetweetButtonPressed:(id)sender {
+    
+     }
+
+- (IBAction)onFavoriteButtonPressed:(id)sender {
+         
+         }
 
 @end

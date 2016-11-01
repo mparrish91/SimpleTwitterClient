@@ -14,7 +14,7 @@ static STUser * _currentUser;
 
 - (instancetype)initWithServerRepresentation:(NSDictionary *)dict
 {
-    self.userDictionary = [[NSDictionary alloc]init];
+    self.userDictionary = [[NSData alloc]init];
 
     
     NSMutableDictionary *valuesForKeys = [NSMutableDictionary dictionary];
@@ -67,11 +67,16 @@ static STUser * _currentUser;
     
     // Unwrap user and save serialized (dict) info to defaults
     NSError *e = nil;
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData: _currentUser.userDictionary options: NSJSONReadingMutableContainers error: &e];
+    
+//    NSDictionary *data = [NSJSONSerialization JSONObjectWithData: _currentUser.userDictionary options: NSJSONReadingMutableContainers error: &e];
+    
+    NSDictionary *userDictionary = _currentUser.userDictionary;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:data];
+
     
     if (data)
     {
-        [[NSUserDefaults standardUserDefaults]setObject:currentUser forKey:@"currentUserData"];
+        [[NSUserDefaults standardUserDefaults]setObject:data forKey:@"currentUserData"];
         NSLog(@"Serialized current user and saving to defaults");
 
     }

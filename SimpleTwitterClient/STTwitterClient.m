@@ -109,6 +109,7 @@
             if ([responseObject isKindOfClass:[NSDictionary class]])
             {
                 STUser *user = [[STUser alloc]initWithServerRepresentation:responseObject];
+                user.userDictionary = responseObject;
                 success(user);
 
             }
