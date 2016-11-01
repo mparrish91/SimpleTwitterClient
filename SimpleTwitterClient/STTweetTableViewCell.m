@@ -17,6 +17,16 @@
     
     self.profilePhotoImageView.layer.cornerRadius = 15;
     self.profilePhotoImageView.clipsToBounds = YES;
+    
+    [[self.replyButton imageView] setContentMode: UIViewContentModeScaleAspectFit];
+    [self.replyButton setImage:[UIImage imageNamed:@"twitter_reply"] forState:UIControlStateNormal];
+
+    [[self.retweetButton imageView] setContentMode: UIViewContentModeScaleAspectFit];
+    [self.retweetButton setImage:[UIImage imageNamed:@"twitter_retweet"] forState:UIControlStateNormal];
+
+    [[self.likeButton imageView] setContentMode: UIViewContentModeScaleAspectFit];
+    [self.likeButton setImage:[UIImage imageNamed:@"twitter_like"] forState:UIControlStateNormal];
+
 }
 - (IBAction)onReplyButtonPressed:(UIButton *)sender {
     sender.selected = ![sender isSelected];

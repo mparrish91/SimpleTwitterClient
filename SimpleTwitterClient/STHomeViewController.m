@@ -116,10 +116,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    return 100;
-}
-
 
 - (STTweetTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -260,7 +256,7 @@
 -(void)stTweetCellReplyButtonDidChange:(STTweet *)tweet value:(BOOL)value
 {
     STNewTweetViewController *newTweetVC = [[STNewTweetViewController alloc]init];
-    newTweetVC.tweetTextView.text = @"@%@",[tweet userName];
+    newTweetVC.tweetTextView.text = [NSString stringWithFormat:@"@%@",[tweet userName]];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:newTweetVC];
     [self.navigationController presentViewController:nav animated:true completion:nil];
 
