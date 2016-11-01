@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STTweetTableViewCell.h"
 
-@interface STHomeViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface STHomeViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, STTweetTableViewCellDelegate>
 
 
 @end

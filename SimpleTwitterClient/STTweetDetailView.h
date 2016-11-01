@@ -8,6 +8,9 @@
 #import "STTweet.h"
 #import <UIKit/UIKit.h>
 
+@protocol STTweetDetailViewCellDelegate;
+
+
 @interface STTweetDetailView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
@@ -26,5 +29,14 @@
 
 
 - (instancetype)initWithTweet:(STTweet *)tweet;
+
+@end
+
+
+@protocol STTweetDetailViewCellDelegate <NSObject>
+@optional
+- (void)stTweetDetailReplyButtonDidChange:(STTweet *)tweet value: (BOOL)value;
+- (void)stTweetDetailFavoriteButtonDidChange:(STTweet *)tweet value: (BOOL)value;
+- (void)stTweetDetailReTweetButtonDidChange:(STTweet *)tweet value: (BOOL)value;
 
 @end

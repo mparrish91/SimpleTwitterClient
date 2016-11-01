@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
+@protocol STTweetTableViewCellDelegate;
+
 @interface STTweetTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *retweetImageView;
@@ -23,5 +25,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
 @property(strong,readwrite,nonatomic) STTweet *tweet;
+
+@end
+
+
+
+
+@protocol STTweetTableViewCellDelegate <NSObject>
+@optional
+- (void)stTweetCellReplyButtonDidChange:(STTweet *)tweet value: (BOOL)value;
+- (void)stTweetCellFavoriteButtonDidChange:(STTweet *)tweet value: (BOOL)value;
+- (void)stTweetCellReTweetButtonDidChange:(STTweet *)tweet value: (BOOL)value;
 
 @end

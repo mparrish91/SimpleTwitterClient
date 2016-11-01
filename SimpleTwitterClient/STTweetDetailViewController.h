@@ -8,8 +8,9 @@
 #import "STTweet.h"
 
 #import <UIKit/UIKit.h>
+#import "STTweetDetailView.h"
 
-@interface STTweetDetailViewController : UIViewController
+@interface STTweetDetailViewController : UIViewController <STTweetDetailViewCellDelegate>
 
 - (instancetype)initWithTweet:(STTweet *)tweet;
 
