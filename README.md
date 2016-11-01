@@ -8,7 +8,6 @@ Time spent: **20+** hours spent in total
 
 The following **required** functionality is completed:
 
-- [x] Table rows should be dynamic height according to the content height.
 - [x] User can sign in using OAuth login flow
 - [x] User can view last 20 tweets from their home timeline
 - [x] The current signed in user will be persisted across restarts
