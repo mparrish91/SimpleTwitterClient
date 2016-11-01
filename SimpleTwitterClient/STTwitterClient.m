@@ -137,5 +137,20 @@
         }];
 }
 
+- (void)sendNewPost: (NSString *)content success:(SuccessHandler)success failure:(FailureHandler)failure
+{
+    NSDictionary *message = @{@"status" : content};
+    NSString *requestString = @"https://api.twitter.com/1.1/statuses/update.json";
+
+    [self POST:requestString parameters:message success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"Twitter HTTP response %@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Twitter HTTP response %@", error.localizedDescription);
+
+    }];
+    
+}
+
+
 
 @end

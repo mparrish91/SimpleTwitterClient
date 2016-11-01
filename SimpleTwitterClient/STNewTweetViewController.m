@@ -149,7 +149,17 @@
 }
 
 -(void)onTweetButtonPressed {
-    
+    //send Tweet
+    STTwitterClient *client = [STTwitterClient sharedInstance];
+    [client sendNewPost:self.tweetTextView.text success:^(id responseObject) {
+        NSLog(@"sucess");
+    } failure:^(NSError *error) {
+        NSLog(@"error");
+
+    }];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 -(void)textViewDidChange:(UITextView *)textView

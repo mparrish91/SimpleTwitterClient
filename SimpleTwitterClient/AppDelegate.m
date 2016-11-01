@@ -40,7 +40,10 @@
         NSLog(@"there is a current user");
         STHomeViewController *homeVC = [[STHomeViewController alloc]init];
         UINavigationController *nav2 = [[UINavigationController alloc]initWithRootViewController:homeVC];
+        
+        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         [self.window setRootViewController:nav2];
+        [self.window makeKeyAndVisible];
 
     }
     else
@@ -48,20 +51,23 @@
         NSLog(@"there is not a current user");
         STLoginViewController *businessVC =[[STLoginViewController alloc]init];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:businessVC];
+        
+        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         [self.window setRootViewController:nav];
+        [self.window makeKeyAndVisible];
 
     }
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"userDidLogout" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         STLoginViewController *businessVC =[[STLoginViewController alloc]init];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:businessVC];
+        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         [self.window setRootViewController:nav];
-        
+        [self.window makeKeyAndVisible];
+
     }];
         
     //set window
-    self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
     
     return YES;
 }
