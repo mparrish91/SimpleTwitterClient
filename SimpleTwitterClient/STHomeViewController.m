@@ -254,6 +254,26 @@
 
 }
 
+//STTweetTableViewCellDelegate
+
+-(void)stTweetCellReplyButtonDidChange:(STTweet *)tweet value:(BOOL)value
+{
+    STNewTweetViewController *newTweetVC = [[STNewTweetViewController alloc]init];
+    newTweetVC.tweetTextView.text = @"@%@",[tweet userName];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:newTweetVC];
+    [self.navigationController presentViewController:nav animated:true completion:nil];
+
+}
+
+-(void)stTweetCellReTweetButtonDidChange:(STTweet *)tweet value:(BOOL)value
+{
+    
+}
+
+-(void)stTweetCellFavoriteButtonDidChange:(STTweet *)tweet value:(BOOL)value
+{
+    
+}
 
 
 

@@ -26,6 +26,9 @@
 
 @property(strong,readwrite,nonatomic) STTweet *tweet;
 
+@property(weak,nonatomic) id <STTweetTableViewCellDelegate> delegate;
+
+
 @end
 
 

@@ -21,24 +21,27 @@
 - (IBAction)onReplyButtonPressed:(UIButton *)sender {
     sender.selected = ![sender isSelected];
 
-    NSString *id = self.tweet.id;
+    if ([self.delegate respondsToSelector:@selector(stTweetCellReplyButtonDidChange:value:)]) {
+        [self.delegate stTweetCellReplyButtonDidChange:self.tweet value:true];
+    }
+
 
 }
 
 - (IBAction)onRetweetButtonPressed:(UIButton *)sender {
     sender.selected = ![sender isSelected];
 
+    if ([self.delegate respondsToSelector:@selector(stTweetCellReTweetButtonDidChange:value:)]) {
+        [self.delegate stTweetCellReTweetButtonDidChange:self.tweet value:true];
+    }
 }
 
 - (IBAction)onFavoriteButtonPressed:(UIButton *)sender {
+    sender.selected = ![sender isSelected];
     
-    
-        sender.selected = ![sender isSelected];
-
-//    [sender setSelected:YES];
-//    [sender setImage:[UIImage imageNamed: @"twitter_like_on"] forState:UIControlStateNormal];
-//    [sender setImage:[UIImage imageNamed: "twitter_like_on"] forState:UIControlStateSelected];
-//    [sender setImage:[UIImage imageNamed: "twitter_like_on"] forState:UIControlStateHighlighted ];
+    if ([self.delegate respondsToSelector:@selector(stTweetCellFavoriteButtonDidChange:value:)]) {
+        [self.delegate stTweetCellFavoriteButtonDidChange:self.tweet value:true];
+    }
 
 }
 

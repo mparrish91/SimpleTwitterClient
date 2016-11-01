@@ -30,6 +30,10 @@
 
 - (instancetype)initWithTweet:(STTweet *)tweet;
 
+@property(weak,nonatomic) id <STTweetDetailViewCellDelegate> delegate;
+
+
+
 @end
 
 
