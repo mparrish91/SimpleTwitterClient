@@ -62,17 +62,7 @@
                                              selector:@selector(presentLoginVC)
                                                  name:@"userDidLogout"
                                                object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserverForName:@"userDidLogout" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-//        STLoginViewController *loginVC =[[STLoginViewController alloc]init];
-//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
-//        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//        [self.window setRootViewController:nav];
-//        [self.window makeKeyAndVisible];
-//
-//    }];
-//        
-    //set window
+
     
     return YES;
 }
