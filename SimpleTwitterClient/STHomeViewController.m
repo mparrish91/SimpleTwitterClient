@@ -58,7 +58,7 @@
     //tableview
     NSString *cellIdentifier = @"cell";
 //    [self.tweetsTableView registerClass:[STTweetTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    [self.tweetsTableView registerNib:[UINib nibWithNibName:@"STTweetTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+//    [self.tweetsTableView registerNib:[UINib nibWithNibName:@"STTweetTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
     self.tweetsTableView.delegate = self;
     self.tweetsTableView.dataSource = self;
@@ -67,8 +67,8 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
     
-    //self.tweetsTableView.estimatedRowHeight = 200;
-    //self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
+    self.tweetsTableView.estimatedRowHeight = 100;
+    self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"  style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     
@@ -89,11 +89,14 @@
         if ([responseObject isKindOfClass:[NSArray class]])
         {
             self.tweets = responseObject;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tweetsTableView reloadData];
-                [self.refreshControl endRefreshing];
-            });
+            [self.tweetsTableView reloadData];
+            [self.refreshControl endRefreshing];
+
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.tweetsTableView reloadData];
+//                [self.refreshControl endRefreshing];
+//            });
         }
         
     } failure:^(NSError *error) {
@@ -130,14 +133,6 @@
 
     }
     
-    return cell;
-}
-
-//This function is where all the magic happens
--(void) tableView:(UITableView *) tableView willDisplayCell:(STTweetTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
     STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
     cell.retweetLabel.text = [tweet retweetName];
     cell.nameLabel.text = [tweet accountName];
@@ -146,25 +141,61 @@
     cell.tweetTextLabel.text = [tweet text];
     cell.delegate = self;
     cell.tweet = tweet;
-
-
+    
+    
     
     if (!tweet.retweet)
     {
         cell.retweetLabel.hidden = true;
         cell.retweetImageView.hidden = true;
     }
-
+    
     cell.tweetTextLabel.text = [tweet text];
-  
-
-    NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]]; 
+    
+    
+    NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]];
     
     [cell.profilePhotoImageView setImageWithURL:photoImageURL];
-
+    
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
+//This function is where all the magic happens
+-(void) tableView:(UITableView *) tableView willDisplayCell:(STTweetTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+//    
+//    STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+//    cell.retweetLabel.text = [tweet retweetName];
+//    cell.nameLabel.text = [tweet accountName];
+//    cell.usernameLabel.text = [NSString stringWithFormat:@"@%@",[tweet userName]];
+//    cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
+//    cell.tweetTextLabel.text = [tweet text];
+//    cell.delegate = self;
+//    cell.tweet = tweet;
+//
+//
+//    
+//    if (!tweet.retweet)
+//    {
+//        cell.retweetLabel.hidden = true;
+//        cell.retweetImageView.hidden = true;
+//    }
+//
+//    cell.tweetTextLabel.text = [tweet text];
+//  
+//
+//    NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]];
+//    
+//    [cell.profilePhotoImageView setImageWithURL:photoImageURL];
+//
+//    
+//    
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
