@@ -51,6 +51,7 @@
                 forControlEvents:UIControlEventTouchUpInside];
     
     [self setConstraints];
+    self.navigationController.navigationBar.hidden = true;
 }
 
 

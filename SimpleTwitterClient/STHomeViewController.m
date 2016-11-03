@@ -164,39 +164,6 @@
     return cell;
 }
 
-//This function is where all the magic happens
--(void) tableView:(UITableView *) tableView willDisplayCell:(STTweetTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-//    
-//    STTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-//    cell.retweetLabel.text = [tweet retweetName];
-//    cell.nameLabel.text = [tweet accountName];
-//    cell.usernameLabel.text = [NSString stringWithFormat:@"@%@",[tweet userName]];
-//    cell.timeLabel.text = [self setTimeAgo:[tweet timestamp]];
-//    cell.tweetTextLabel.text = [tweet text];
-//    cell.delegate = self;
-//    cell.tweet = tweet;
-//
-//
-//    
-//    if (!tweet.retweet)
-//    {
-//        cell.retweetLabel.hidden = true;
-//        cell.retweetImageView.hidden = true;
-//    }
-//
-//    cell.tweetTextLabel.text = [tweet text];
-//  
-//
-//    NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]];
-//    
-//    [cell.profilePhotoImageView setImageWithURL:photoImageURL];
-//
-//    
-//    
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -306,7 +273,8 @@
 -(void)stTweetCellReTweetButtonDidChange:(STTweet *)tweet value:(BOOL)value
 {
     STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client reTweet:[tweet id] success:^(id responseObject) {
+    NSString *tweetID = [NSString stringWithFormat:@"%@", [tweet id]];
+    [client reTweet:tweetID success:^(id responseObject) {
         NSLog(@"Sucess");
     } failure:^(NSError *error) {
         NSLog(@"error");
@@ -318,7 +286,8 @@
 -(void)stTweetCellFavoriteButtonDidChange:(STTweet *)tweet value:(BOOL)value
 {
     STTwitterClient *client = [STTwitterClient sharedInstance];
-    [client favorite:[tweet id] success:^(id responseObject) {
+    NSString *tweetID = [NSString stringWithFormat:@"%@", [tweet id]];
+    [client favorite:tweetID success:^(id responseObject) {
         NSLog(@"Sucess");
     } failure:^(NSError *error) {
         NSLog(@"error");

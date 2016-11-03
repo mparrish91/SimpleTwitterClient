@@ -49,8 +49,8 @@
     else
     {
         NSLog(@"there is not a current user");
-        STLoginViewController *businessVC =[[STLoginViewController alloc]init];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:businessVC];
+        STLoginViewController *loginVC =[[STLoginViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
         
         self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         [self.window setRootViewController:nav];
@@ -58,18 +58,36 @@
 
     }
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"userDidLogout" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        STLoginViewController *businessVC =[[STLoginViewController alloc]init];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:businessVC];
-        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        [self.window setRootViewController:nav];
-        [self.window makeKeyAndVisible];
-
-    }];
-        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(presentLoginVC)
+                                                 name:@"userDidLogout"
+                                               object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserverForName:@"userDidLogout" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+//        STLoginViewController *loginVC =[[STLoginViewController alloc]init];
+//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+//        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        [self.window setRootViewController:nav];
+//        [self.window makeKeyAndVisible];
+//
+//    }];
+//        
     //set window
     
     return YES;
+}
+
+
+-(void)presentLoginVC
+{
+    STLoginViewController *loginVC =[[STLoginViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+
+    [UIView transitionWithView:self.window duration:0.5 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
+        [self.window setRootViewController:nav];
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 

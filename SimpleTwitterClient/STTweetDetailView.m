@@ -48,7 +48,8 @@
     
     NSURL *photoImageURL = [NSURL URLWithString:[tweet avatarImagePath]];
     
-    [self.profilePhotoImageView setImageWithURL:photoImageURL placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
+    [self.profilePhotoImageView setImageWithURL:photoImageURL];
+
 
     self.profilePhotoImageView.layer.cornerRadius = 8;
     self.profilePhotoImageView.clipsToBounds = YES;

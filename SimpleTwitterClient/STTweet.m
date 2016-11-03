@@ -72,8 +72,8 @@
     if ((value = dict[@"created_at"]) && [value isKindOfClass:[NSString class]])
         valuesForKeys[@"timestamp"] = [self convertStringToDate:value];
     
-    if ((value = dict[@"id"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"id"] = [self convertStringToDate:value];
+      if ((value = dict[@"id"]) && [value respondsToSelector:@selector(integerValue)])
+          valuesForKeys[@"id"] = value;
 
     
     [self setValuesForKeysWithDictionary:valuesForKeys];
